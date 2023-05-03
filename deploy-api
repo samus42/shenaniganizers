@@ -1,0 +1,8 @@
+pushd functions
+npm ci --production
+popd
+firebase deploy --only functions
+pushd functions
+echo reinstalling dependencies
+npm ci
+popd

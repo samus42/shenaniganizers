@@ -1,0 +1,14 @@
+node_modules/
+public/
+.npm
+.env
+.env.test
+.eslintcache
+coverage
+.nyc_output
+npm-dbug.log
+*.log
+logs
+tree.txt
+service-credentials.json
+dumpcommands.txt

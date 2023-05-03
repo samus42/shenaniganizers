@@ -1,0 +1,161 @@
+@import 'Media';
+
+.raid-stage {
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 10px;
+    min-height: 320px;
+}
+
+.react-datepicker-wrapper {
+  width: 300px;
+  .react-datepicker__input-container {
+    input {
+      width: 100%;
+      font-size: medium;
+    }
+  }
+}
+
+.raid-roster-slot {
+  border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.player-drop-target-hover {
+  background-color: lightgray;
+}
+
+.draggable-player {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.menu-bar-user {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.clear-button {
+  border: 1px solid #b00020;
+  color: #b00020;
+  border-radius: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+  height: 24px;
+}
+
+.menu-surface {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.member-card {
+  text-align: center;
+  border: 2px solid lightgray;
+  border-radius: 25px;
+  box-shadow: 5px 10px #888888;
+  padding: 5px;
+  min-height: 350px;
+  min-width: 426px;
+  max-width: 445px;
+  width: 400px;
+  .member-detail {
+    padding: 5px;
+  }
+
+  img {
+    width: 180px;
+  }
+}
+
+.main-tab-content {
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  @include for_breakpoint(mobile) {
+    padding-left:5px;
+    padding-right:5px;
+  }
+}
+// .player-drop-target-unassigned {
+//   background-color: lightgray;
+// }
+
+// .player-drop-target-assigned {
+//   background-color: lightgreen;
+// }
+
+.extras-list {
+  font-size: 24px;
+  margin: 10px;
+  li {
+    padding: 2px;
+  }
+}
+
+.selected-symbol {
+  border: 5px solid goldenrod;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.unselected-symbol {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.gradient-border {
+  &:hover {
+    cursor: pointer;
+  }
+  --border-width: 5px;
+  margin: 5px;
+  border-radius: var(--border-width);
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      gold,
+      darkgoldenrod,
+      silver,
+      // #5d1049,
+      // green,
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: calc(2 * var(--border-width));
+    animation: moveGradient 4s alternate infinite;
+  }
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+/*
+hsl(224, 85%, 66%),
+      hsl(269, 85%, 66%),
+      hsl(314, 85%, 66%),
+      hsl(359, 85%, 66%),
+      hsl(44, 85%, 66%),
+      hsl(89, 85%, 66%),
+      hsl(134, 85%, 66%),
+      hsl(179, 85%, 66%)
+      */

@@ -1,0 +1,130 @@
+type DestinyPlayer {
+    name: String
+    destinyId: String
+    iconPath: String
+}
+
+enum PlayerType {
+    Destiny,
+    Associate
+}
+
+type ActivityPlayer {
+    name: String
+    id: String
+    type: String
+}
+
+type Activity {
+    id: ID
+    type: String
+    instanceName: String
+    activityName: String
+    players: [ActivityPlayer]
+    maxPlayers: Int
+    date: String
+    info: String
+    active: Boolean
+    version: Int
+}
+
+type Role {
+    name: String
+    type: String
+    player: DestinyPlayer
+}
+
+type Strategy {
+    title: String,
+    description: String,
+    roles: [Role]
+}
+
+type Stage {
+    title: String
+    description: String
+    roles: [Role]
+    strategies: [Strategy]
+    strategy: Strategy
+}
+
+type Raid {
+    id: ID
+    raidName: String
+    instanceName: String
+    date: String
+    stages: [Stage]
+    roster: [DestinyPlayer]
+    active: Boolean
+    version: Int
+}
+
+type Query {
+    version: String
+    raids: [Raid]
+    getRaid(id: ID) : Raid
+    listRaids: [Raid]
+    userRaidHistory(destinyId: String): [Raid]
+    listActivities: [Activity]
+    getActivity(id: ID): Activity
+}
+
+input DestinyPlayerInput {
+    name: String
+    destinyId: String!
+    iconPath: String
+}
+
+input RoleInput {
+    name: String
+    type: String
+    player: DestinyPlayerInput
+}
+
+input StrategyInput {
+    title: String
+    description: String
+    roles: [RoleInput]
+}
+input StageInput {
+    title: String
+    description: String
+    roles: [RoleInput]
+    strategies: [StrategyInput]
+    strategy: StrategyInput
+}
+
+input RaidInput {
+    id: ID
+    instanceName: String
+    date: String
+    raidName: String
+    stages: [StageInput]
+    roster: [DestinyPlayerInput]
+    version: Int
+}
+
+input ActivityPlayerInput {
+    name: String
+    id: String
+    type: String
+}
+
+input ActivityInput {
+    id: String
+    type: String
+    activityName: String
+    instanceName: String
+    players: [ActivityPlayerInput]
+    maxPlayers: Int
+    date: String
+    info: String
+    version: Int
+}
+
+type Mutation {
+    saveRaid(raid: RaidInput!) : Raid
+    saveActivity(activity: ActivityInput!): Activity
+    archiveRaid(id: ID!): Raid
+    archiveActivity(id: ID!): Activity
+}

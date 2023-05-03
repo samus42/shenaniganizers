@@ -52,7 +52,7 @@ const Main = (props) => {
                 activeTab === tabs.extras && <Extras />
             }
             <div style={{ textAlign: 'center', position: 'fixed', bottom: '0', width: '100%', color: 'gray' }}>
-                <small>Version Mono {packageJSON.version}</small>
+                <small>Version {packageJSON.version}</small>
             </div>
         </div>
     )

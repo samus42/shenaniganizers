@@ -1,7 +1,7 @@
-pushd web
-npm version $1 || exit 1
-popd
 pushd functions
+npm version $1 --no-git-tag-version || exit 1
+popd
+pushd web
 npm version $1 || exit 1
 popd
 ./deploy-all || exit 1

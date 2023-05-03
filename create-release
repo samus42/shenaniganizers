@@ -4,7 +4,7 @@ popd
 pushd functions
 npm version $1 || exit 1
 popd
-deploy-all || exit 1
+./deploy-all || exit 1
 git push --follow-tags || exit 1
 pushd web
 npm version patch --no-git-tag-version

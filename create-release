@@ -1,0 +1,16 @@
+pushd web
+npm version $1 || exit 1
+popd
+pushd functions
+npm version $1 || exit 1
+popd
+deploy-all || exit 1
+git push --follow-tags || exit 1
+pushd web
+npm version patch --no-git-tag-version
+popd
+pushd functions
+npm version patch --no-git-tag-version
+popd
+git add .
+git commit -m "next development version"

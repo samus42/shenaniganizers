@@ -8,6 +8,7 @@ const saveActivity = require('../data/activities/saveActivity')
 const loadActivity = require('../data/activities/loadActivity')
 const archiveActivity = require('../data/activities/archiveActivity')
 const getActivities = require('../data/activities/getActivities')
+const { sendRaidMessage } = require('../discord/webhook')
 
 const resolvers = {
     Query: {
@@ -31,8 +32,32 @@ const resolvers = {
         }
     },
     Mutation: {
-        saveRaid(root, { raid }) {
-            return saveRaid(raid)
+        async saveRaid(root, { raid }) {
+            let original = null
+            if (raid.id) {
+                try {
+                    original = await loadRaid(raid.id)
+                } catch (err) {
+                    console.warn('Error loading raid for update: ', raid.id)
+                    console.warn(err)
+                }
+            }
+            const updated = await saveRaid(raid)
+            try {
+                let title = null
+                if (original && raid.date !== original.date) {
+                    title = 'Raid Date/Time updated!'
+                } else if (!original) {
+                    title = 'New Raid Posted!'
+                }
+                if (title) {
+                    await sendRaidMessage(title, raid)
+                }
+            } catch (err) {
+                console.warn('Error sending message to discord')
+                console.warn(err)
+            }
+            return updated
         },
         archiveRaid(root, { id }) {
             return archiveRaid(id)

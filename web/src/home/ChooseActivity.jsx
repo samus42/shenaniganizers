@@ -12,7 +12,7 @@ const activities = [
     createActivity("Garden Of Salvation", "/activities/garden.png", '/raid/garden'),
     createActivity("Last Wish", "/activities/lastwish.png", '/raid/wish'),
     createActivity("Among Us", "/activities/amongus.png", '/activity/amongus'),
-    createActivity("Custom Activity", "/chaos-aqua.png", '/activity/custom'),
+    createActivity("Custom Activity", "/activities/custom.png", '/activity/custom'),
     createActivity(`Crota's End`, "/activities/crota.png", '/raid/crota'),
     createActivity("Wrath Of The Machine", "/activities/wrathofthemachine.png", '/raid/wrath')
 ]

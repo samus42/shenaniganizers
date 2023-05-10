@@ -14,21 +14,22 @@ const Thumbnails = {
     'Garden Of Salvation': 'garden.png',
     'Last Wish': 'lastwish.png',
     'Among Us': 'amongus.png',
-    'Custom': 'chaos-aqua.png',
+    'Custom': 'custom.png',
     "Crota's End": 'crota.png',
     'Wrath Of The Machine': 'wrathofthemachine.png'
 }
 
-async function sendRaidMessage(title, raid) {
-    const date = moment(raid.date)
+async function sendEventMessage(title, event, eventFieldName) {
+    const date = moment(event.date)
     const dateFormat = 'h:mma zz'
-    const thumbnailImage = Thumbnails[raid.raidName] || 'chaos-aqua.png'
+    const eventName = event[eventFieldName]
+    const thumbnailImage = Thumbnails[eventName] || 'chaos-aqua.png'
     const message = {
         "embeds": [
             {
                 "title": title,
-                "description": `${raid.instanceName} - ${raid.raidName}`,
-                "url": `${raidBase}/${raid.id}`,
+                "description": `${event.instanceName} - ${eventName}`,
+                "url": `${raidBase}/${event.id}`,
                 "fields": [
                     {
                         "name": "Date",
@@ -46,8 +47,16 @@ async function sendRaidMessage(title, raid) {
             }
         ]
     }
-    // console.log(JSON.stringify(moment.tz.names(), null, 2))
     await agent.post(webhookUrl).set('content-type', 'application/json').send(message)
 }
 
-module.exports = { sendRaidMessage }
+
+async function sendRaidMessage(title, raid) {
+    sendEventMessage(title, raid, 'raidName')
+}
+
+async function sendActivityMessage(title, activity) {
+    sendEventMessage(title, activity, 'activityName')
+}
+
+module.exports = { sendRaidMessage, sendActivityMessage }

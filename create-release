@@ -2,9 +2,13 @@ pushd functions
 npm version $1 --no-git-tag-version || exit 1
 popd
 pushd web
-npm version $1 || exit 1
+npm version $1 --no-git-tag-version > ../version.txt || exit 1
 popd
 ./deploy-all || exit 1
+git add .
+git commit -m "$(< version.txt)"
+git tag "$(< version.txt)"
+rm version.txt
 git push --follow-tags || exit 1
 pushd web
 npm version patch --no-git-tag-version

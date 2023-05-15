@@ -51,7 +51,7 @@ const resolvers = {
                     title = 'New Raid Posted!'
                 }
                 if (title) {
-                    await sendRaidMessage(title, raid)
+                    await sendRaidMessage(title, updated)
                 }
             } catch (err) {
                 console.warn('Error sending message to discord')
@@ -85,7 +85,7 @@ const resolvers = {
                     title = 'New Activity Posted!'
                 }
                 if (title) {
-                    await sendActivityMessage(title, activity)
+                    await sendActivityMessage(title, updated)
                 }
             } catch (err) {
                 console.warn('Error sending message to discord')

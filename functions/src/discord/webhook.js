@@ -33,7 +33,7 @@ async function sendEventMessage(title, event, eventFieldName) {
                 "fields": [
                     {
                         "name": "Date",
-                        "value": date.format('dddd, MMMM Do YYYY')
+                        "value": date.tz('US/Pacific').format('dddd, MMMM Do YYYY')
                     },
                     {
                         "name": "Time",

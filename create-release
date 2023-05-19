@@ -10,6 +10,8 @@ git commit -m "$(< version.txt)"
 git tag "$(< version.txt)"
 rm version.txt
 git push --follow-tags || exit 1
+git push --tags
+
 pushd web
 npm version patch --no-git-tag-version
 popd

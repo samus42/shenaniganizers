@@ -1,6 +1,6 @@
 {
   "name": "functions",
-  "version": "1.16.5",
+  "version": "1.16.6",
   "description": "Cloud Functions for Firebase",
   "scripts": {
     "dev": "supervisor ./bin/www.js",

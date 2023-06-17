@@ -8,7 +8,7 @@ const golgorothsCellarMap = "https://cdn.mos.cms.futurecdn.net/EEuCVJGqzqDynBBXu
 const oryxMap = "https://i.imgur.com/3KUEolS.png"
 
 const SubjectCard = ({ imagePath, title, screenLayout, onClick }) => {
-    const titleSize = screenLayout === 'desktop' ? 'h5' : 'subtitle1'
+    const titleSize = screenLayout === 'desktop' ? 'h6' : 'subtitle1'
     const imageSize = screenLayout === 'desktop' ? '120px' : '80px'
     const cardWidth = screenLayout === 'desktop' ? '250px' : '170px'
     return (
@@ -69,10 +69,25 @@ function NightmarePanel() {
             </Stack>
         </div>
     )
-}//mlsfs
+}
+
+function GhostsPanel() {
+    const wreckageMap = 'https://images2.imgbox.com/d9/02/RA90SV8P_o.jpg'
+    const lootTable = 'https://www.shacknews.com/article/135685/ghosts-of-the-deep-loot-table-destiny-2'
+    return (
+        <div>
+            <Typography variant="h6">Ghosts of the Deep</Typography>
+            <Stack spacing={2} sx={{ maxWidth: '400px' }}>
+                <a rel="noreferrer" target="_blank" href={wreckageMap}><Button sx={{ width: '100%' }} variant="contained">Wreckage Map</Button></a>
+                <a rel="noreferrer" target="_blank" href={lootTable}><Button sx={{ width: '100%' }} variant="contained">Loot Table</Button></a>
+            </Stack>
+        </div>
+    )
+}
 function TopLevelPanel({ screenLayout, onChangePanel }) {
     return (
         <Grid container spacing={1}>
+            <SubjectCard imagePath="/activities/ghosts-of-the-deep.png" title="Ghosts of the Deep" screenLayout={screenLayout} onClick={() => { onChangePanel("ghosts") }} />
             <SubjectCard imagePath="/activities/nightmares.png" title="Root of Nightmares" screenLayout={screenLayout} onClick={() => { onChangePanel("nightmare") }} />
             <SubjectCard imagePath="/activities/takenking.png" title="Taken King" screenLayout={screenLayout} onClick={() => { onChangePanel("kf") }} />
             <SubjectCard imagePath="/activities/disciple.png" title="Vow of the Disciple" screenLayout={screenLayout} onClick={() => { onChangePanel("vow") }} />
@@ -84,7 +99,8 @@ function TopLevelPanel({ screenLayout, onChangePanel }) {
 const components = {
     kf: KingsFallPanel,
     vow: VowPanel,
-    nightmare: NightmarePanel
+    nightmare: NightmarePanel,
+    ghosts: GhostsPanel
 }
 
 export function HelpfulToolsContainer() {

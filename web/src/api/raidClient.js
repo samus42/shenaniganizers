@@ -1,7 +1,8 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 // import dataStore from './dataStore'
 // const apiUrl = 'https://us-central1-shenaniganizers-e51d9.cloudfunctions.net/api'
-const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000'
+const apiUrl = import.meta.env.VITE_API_URL
+// const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000'
 // const apiUrl = 'http://localhost:4000' //process.env.REACT_APP_API_URL || 'http://localhost:4000'
 // console.log('api url: ', apiUrl)
 // console.log('env: ', process.env)

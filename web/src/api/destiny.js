@@ -3,8 +3,8 @@ import sortBy from 'lodash.sortby'
 import uniqBy from 'lodash.uniqby'
 import dayjs from 'dayjs'
 
-const header = { 'X-API-KEY': process.env.REACT_APP_API_KEY }
-const clientId = process.env.REACT_APP_CLIENT_ID
+const header = { 'X-API-KEY': import.meta.env.VITE_API_KEY }
+const clientId = import.meta.env.VITE_CLIENT_ID
 const clanId = 1487234
 
 export const baseUrl = 'https://www.bungie.net'

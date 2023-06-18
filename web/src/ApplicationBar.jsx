@@ -12,7 +12,7 @@ import {
 import { useNavigate, useLocation } from 'react-router-dom'
 import { getCurrentUserInfo, clearMembershipInfo } from './user/currentUser'
 
-const clientId = process.env.REACT_APP_CLIENT_ID
+const clientId = import.meta.env.VITE_CLIENT_ID
 const bungieLoginUrl = `https://www.bungie.net/en/OAuth/Authorize?client_id=${clientId}&response_type=code`
 
 const ApplicationBar = (props) => {

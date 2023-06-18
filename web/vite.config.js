@@ -29,10 +29,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          lodash: ['lodash'],
+          lodash: ['lodash', 'omit-deep-lodash'],
           react: ['react'],
           graphql: ['graphql', '@apollo/client'],
-          material: ['@mui/icons-material', '@mui/material', '@mui/lab', '@mui/x-date-pickers']
+          material: ['@mui/material', '@mui/lab', '@mui/x-date-pickers']
         }
       }
     }

@@ -20,7 +20,21 @@ export default defineConfig({
     port: 3000,
     https: httpsOptions
   },
+  preview: {
+    port: 3000,
+    https: httpsOptions
+  },
   build: {
-    manifest: true
+    manifest: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          lodash: ['lodash'],
+          react: ['react'],
+          graphql: ['graphql', '@apollo/client'],
+          material: ['@mui/icons-material', '@mui/material', '@mui/lab', '@mui/x-date-pickers']
+        }
+      }
+    }
   }
 })

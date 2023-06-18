@@ -1,1 +1,4 @@
+pushd web
+npm run build
+popd
 firebase deploy

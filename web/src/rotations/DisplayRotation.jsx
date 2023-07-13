@@ -6,14 +6,24 @@ import { getWellspring } from "./wellspring"
 import { getLostSector } from "./lostSectors"
 import { getLegendActivity } from "./legendActivities"
 
+const KeyValue = ({ label, value }) => (
+    <div style={{ display: 'flex' }}>
+        <div style={{ width: '10ch' }}>{label}:</div>
+        <div>{value}</div>
+    </div>
+)
 const LostSector = ({ date }) => {
     const lostSector = getLostSector(date)
+    console.log('ls: ', lostSector)
     return (
         <div>
             <Typography variant="h5">Lost Sector</Typography>
             <div style={{ paddingLeft: '10px' }}>
                 <div><strong>{lostSector.name}</strong> ({lostSector.area})</div>
-                <div>Reward: {lostSector.reward}</div>
+                <KeyValue label='Threat' value={lostSector.threat} />
+                <KeyValue label='Shields' value={lostSector.shields.join(', ')} />
+                <KeyValue label='Champions' value={lostSector.champions.join(', ')} />
+                <KeyValue label='Reward' value={lostSector.reward} />
             </div>
         </div>
     )
@@ -32,18 +42,18 @@ const Wellspring = ({ date }) => {
     )
 }
 
-const LegendaryActivity = ({ date }) => {
-    const { heist, remaining } = getLegendActivity(date)
-    return (
-        <div>
-            <Typography variant="h5">Legendary Defiant Battleground (weekly)</Typography>
-            <div style={{ paddingLeft: '10px' }}>
-                <div><strong>{heist}</strong></div>
-                <div>Chances left this season: {remaining}</div>
-            </div>
-        </div>
-    )
-}
+// const LegendaryActivity = ({ date }) => {
+//     const { heist, remaining } = getLegendActivity(date)
+//     return (
+//         <div>
+//             <Typography variant="h5">Legendary Defiant Battleground (weekly)</Typography>
+//             <div style={{ paddingLeft: '10px' }}>
+//                 <div><strong>{heist}</strong></div>
+//                 <div>Chances left this season: {remaining}</div>
+//             </div>
+//         </div>
+//     )
+// }
 const DisplayRotation = () => {
     const [selectedDate, setSelectedDate] = useState(dayjs().format('MM/DD/YYYY'))
     useEffect(() => {
@@ -73,9 +83,6 @@ const DisplayRotation = () => {
                 </div>
                 <div style={{ marginTop: '20px' }}>
                     <Wellspring date={selectedDate} />
-                </div>
-                <div style={{ marginTop: '20px' }}>
-                    <LegendaryActivity date={selectedDate} />
                 </div>
             </div>
             <div style={{ marginTop: '20px' }}>

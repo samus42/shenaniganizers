@@ -1,16 +1,10 @@
 import dayjs from 'dayjs'
+import { Areas, Elements, Champions } from '../constants'
 
-const sector = (name, area) => ({ name, area })
-export const Areas = {
-    Cosmodrome: 'Cosmodrome',
-    DreamingCity: 'Dreaming City',
-    Moon: 'Moon',
-    ThroneWorld: 'Throne World',
-    Nessus: 'Nessus',
-    EDZ: 'EDZ',
-    Europa: 'Europa',
-    Neptune: 'Neptune'
-}
+const { Void, Solar, Arc } = Elements
+const { Overload, Unstoppable, Barrier } = Champions
+
+const sector = (name, area, threat, shields, champions) => ({ name, area, threat, shields, champions })
 
 export const Rewards = {
     Chest: 'Chest',
@@ -21,46 +15,47 @@ export const Rewards = {
 
 export const FirstDayOfLostSectorRotation = dayjs('2023-05-23')
 
+const K1Revelation = sector(`K1 Revelation`, Areas.Moon, Void, [Arc], [Barrier, Unstoppable])
+const K1CrewQuarters = sector(`K1 Crew Quarters`, Areas.Moon, Arc, [Solar], [Barrier, Overload])
+const K1Logistics = sector(`K1 Logistics`, Areas.Moon, Void, [Arc, Solar], [Barrier, Overload])
+const K1Communion = sector(`K1 Communion`, Areas.Moon, Solar, [Solar, Void], [Barrier, Overload])
+const Sepulcher = sector(`Sepulcher`, Areas.ThroneWorld, Solar, [Arc, Solar], [Barrier, Unstoppable])
+const Extraction = sector(`Extraction`, Areas.ThroneWorld, Arc, [Arc, Void], [Overload, Unstoppable])
+const AphelionsRest = sector(`Aphelion's Rest`, Areas.DreamingCity, Solar, [Void], [Overload, Unstoppable])
+const ChamberOfStarlight = sector(`Chamber of Starlight`, Areas.DreamingCity, Solar, [Solar, Void], [Overload, Unstoppable])
+const BayOfDrownedWishse = sector(`Bay of Drowned Wishes`, Areas.DreamingCity, Solar, [Void], [Overload, Unstoppable])
+const VelesLabyrinth = sector('Veles Labyrinth', Areas.Cosmodrome, Arc, [Arc, Solar], [Barrier, Unstoppable])
+const ExodusGarden2A = sector('Exodus Garden 2A', Areas.Cosmodrome, Void, [Void], [Barrier, Overload])
+/*
+const Thrilladome = sector('Thrilladrome', Areas.Neptune, Void, [Arc, Void], [Barrier, Overload])
+const HyrdoponicsDelta  = sector('Hydroponics Delta', Areas.Neptune, Void, [], [Barrier, Unstoppable])
+const GildedPrecept = sector('Gilded Precept', Areas.Neptune, [Solar, Void], [Barrier, Unstoppable])
+const ExcavationSiteXII = sector(`Excavation Site XII`, Areas.EDZ, Solar, [Arc], [Barrier, Unstoppable])
+const SkydockIV = sector(`Skydock IV`, Areas.EDZ, Solar, [Void], [Barrier, Unstoppable])
+const TheQuarry = sector(`The Quarry`, Areas.EDZ, Void, [Solar, Void], [Barrier, Unstoppable])
+const Perdition = sector('Perdition', Areas.Europa, Arc, [Arc, Void], [Barrier, Overload])
+const BunkerE15 = sector('Bunker E15', Areas.Europa, Void, [Void], [Barrier, Overload])
+const TheConflux = sector('The Conflux', Areas.Nessus, Solar, [Void], [Barrier, Unstoppable])
+*/
+
 const sectorRotation = [
-    sector(`K1 Revelation`, Areas.Moon),
-    sector(`K1 Crew Quarters`, Areas.Moon),
-    sector(`K1 Logistics`, Areas.Moon),
-    sector(`K1 Communion`, Areas.Moon),
-    sector(`Sepulcher`, Areas.ThroneWorld),
-    sector(`Extraction`, Areas.ThroneWorld),
-    sector(`Aphelion's Rest`, Areas.DreamingCity),
-    sector(`Chamber of Starlight`, Areas.DreamingCity),
-    sector(`Bay of Drowned Wishes`, Areas.DreamingCity),
-    sector('Veles Labyrinth', Areas.Cosmodrome),
-    sector('Exodus Garden 2A', Areas.Cosmodrome),
+    K1Revelation,
+    K1CrewQuarters,
+    K1Logistics,
+    K1Communion,
+    Sepulcher,
+    Extraction,
+    AphelionsRest,
+    ChamberOfStarlight,
+    BayOfDrownedWishse,
+    VelesLabyrinth,
+    ExodusGarden2A
 ]
 /*
-
- 
-    sector('Thrilladrome', Areas.Neptune),
-    sector('Hydroponics Delta', Areas.Neptune),
-    sector('Gilded Precept', Areas.Neptune),
-    sector(`Excavation Site XII`, Areas.EDZ),
-    sector(`Skydock IV`, Areas.EDZ),
-    sector(`The Quarry`, Areas.EDZ),
-    sector('Perdition', Areas.Europa),
-    sector('Bunker E15', Areas.Europa),
-    sector('The Conflux', Areas.Nessus),
 sector('Concealed Void', Areas.Europa),
- 
- 
-sector(`Metamorphosis`, Areas.ThroneWorld),
- 
-sector(`Scavenger's Den`, Areas.EDZ),
- 
- 
- 
-sector('The Rift', Areas.Nessus),
-    
- 
- 
- 
-
+ sector(`Metamorphosis`, Areas.ThroneWorld),
+ sector(`Scavenger's Den`, Areas.EDZ),
+ sector('The Rift', Areas.Nessus),
 */
 const rewardRotation = [
     Rewards.Chest,

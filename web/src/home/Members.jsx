@@ -14,6 +14,23 @@ const MemberCard = ({ name, iconUrl, children }) => (
 
 )
 
+const VikingDragon = () => (
+    <MemberCard name="Viking Dragon" iconUrl="https://www.bungie.net/img/profile/avatars/cc00007.jpg">
+        <div className="member-detail">
+            What's that you're eating?
+        </div>
+        <div className="member-detail">
+            <span style={{ fontStyle: 'italic' }}>Um... nothing...</span>
+        </div>
+        <div className="member-detail">
+            There are multiple colors dripping out of your mouth, those were crayons! Wait, aren't you a Warlock?
+        </div>
+        <div className="member-detail">
+            <span style={{ fontStyle: 'italic' }}>I'm still a Marine.</span>
+        </div>
+    </MemberCard>
+)
+
 const W6MIR = () => (
     <MemberCard name="W6MIR" iconUrl="https://www.bungie.net//img/profile/avatars/cc22.jpg">
         <div className="member-detail">
@@ -338,6 +355,7 @@ const Members = () => {
                 <Tansy />
                 <TennisMinecraft />
                 <ThirdEye />
+                <VikingDragon />
                 <W6MIR />
                 <Wendy />
                 <Wdnesday />

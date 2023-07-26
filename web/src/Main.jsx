@@ -12,6 +12,7 @@ import ExternalHome from './external/ExternalHome'
 import DisciplePuzzle from './tools/disciple/DisciplePuzzle';
 import TakenKingChestPuzzle from './tools/takenking/ChestPuzzle';
 import { BlogMain } from './blog';
+import { EmoteActions } from './tools/emotes/EmoteActions';
 
 const Main = (props) => {
     return (
@@ -38,6 +39,7 @@ const Main = (props) => {
                 </Route>
                 <Route path="/public/tools/disciple-puzzle" element={<DisciplePuzzle />} />
                 <Route path="/public/tools/tkk-puzzle" element={<TakenKingChestPuzzle />} />
+                <Route path="/emote" element={<EmoteActions />} />
             </Routes>
         </Router>
     )

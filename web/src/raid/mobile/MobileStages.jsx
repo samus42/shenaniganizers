@@ -29,7 +29,6 @@ const Stage = ({ raid, stage, onChange = () => { }, onStrategyChange = () => { }
                             labelId="select-label"
                             label="Strategy"
                             onChange={(evt) => {
-                                console.log('val: ', evt.target.value)
                                 onStrategyChange(stage, stage.strategies.find((s) => s.title === evt.target.value))
                             }}
                         >

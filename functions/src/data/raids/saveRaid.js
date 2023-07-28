@@ -2,7 +2,6 @@ const _ = require('lodash')
 const { getRaidsCollection, getObjectID, formatOutput } = require('../mongo')
 
 const saveRaid = async (raid) => {
-    // console.log('saving: ', raid)
     const collection = await getRaidsCollection()
 
     if (raid.id) {

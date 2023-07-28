@@ -71,7 +71,6 @@ const ActivityMain = () => {
     }
 
     const performSave = async (activityData) => {
-        console.log('saving: ', activityData)
         try {
             const isNew = !activity.id
             const updated = await saveActivity(activityData)
@@ -104,7 +103,6 @@ const ActivityMain = () => {
     }
 
     const onErrorDialogClose = (action) => {
-        console.log('onErrorDialogClose: ', action)
         if (action === 'reload') {
             //refresh page
             window.location.reload()

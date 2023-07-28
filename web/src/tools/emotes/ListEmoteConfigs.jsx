@@ -37,7 +37,7 @@ export function ListEmoteConfigs({ onSelect, currentUser }) {
     let addDisabledMessage = ''
     if (!currentUser) {
         addDisabledMessage = 'You must be logged in to create a Emote Config.'
-    } else if (configs.find((config) => config.player.name === currentUser.name)) {
+    } else if (configs.find((config) => config.player.destinyId === currentUser.destinyId)) {
         addDisabledMessage = 'You have already created a config, select it below to edit.'
     }
 

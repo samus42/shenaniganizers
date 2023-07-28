@@ -3,8 +3,6 @@ const { getEmoteConfigsCollection, formatOutput, getObjectID } = require('../mon
 const loadEmoteConfig = async (id) => {
     const collection = await getEmoteConfigsCollection()
     const result = await collection.findOne({ _id: getObjectID(id) })
-    console.log('id: ', id)
-    console.log('result: ', result)
     return formatOutput(result)
 }
 

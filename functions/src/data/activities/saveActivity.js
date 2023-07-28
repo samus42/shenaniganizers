@@ -3,7 +3,6 @@ const { getDB, getObjectID, formatOutput, getActivitiesCollection } = require('.
 
 const saveActivity = async (activity) => {
     try {
-        // console.log('saving: ', activity)
         const collection = await getActivitiesCollection()
 
         if (activity.id) {

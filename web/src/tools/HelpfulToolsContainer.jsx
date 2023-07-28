@@ -91,6 +91,7 @@ function TopLevelPanel({ screenLayout, onChangePanel }) {
             <SubjectCard imagePath="/activities/nightmares.png" title="Root of Nightmares" screenLayout={screenLayout} onClick={() => { onChangePanel("nightmare") }} />
             <SubjectCard imagePath="/activities/takenking.png" title="Taken King" screenLayout={screenLayout} onClick={() => { onChangePanel("kf") }} />
             <SubjectCard imagePath="/activities/disciple.png" title="Vow of the Disciple" screenLayout={screenLayout} onClick={() => { onChangePanel("vow") }} />
+            <SubjectCard imagePath="https://titles.trackercdn.com/destiny/common/destiny2_content/icons/06890287711fb3db6e35dacd696ed748.jpg" title="Emote Communication" screenLayout={screenLayout} onClick={() => window.open("/tools/emotes", "_blank")} />
             <SubjectCard imagePath="/loot-chest.png" title="Loot Tables" screenLayout={screenLayout} onClick={() => window.open("https://www.blueberries.gg/weapons/destiny-2-loot-tables/", "_blank")} />
         </Grid>
     )
@@ -123,7 +124,6 @@ export function HelpfulToolsContainer() {
 
     if (subPanel) {
         if (!components[subPanel]) {
-            console.log('subpane: ', subPanel)
             throw new Error('Invalid subpanel: ', subPanel)
         }
         const SubComponent = components[subPanel]

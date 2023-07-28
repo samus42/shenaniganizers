@@ -29,8 +29,6 @@ const MobileMain = ({ roster, date, instanceName, raid, saveEnabled, onSave, onA
     }
 
     const onStrategyChange = (stage, strategy) => {
-        console.log('rs: ', stage)
-        console.log('rt: ', strategy)
         const clone = (obj) => JSON.parse(JSON.stringify(obj))
         const newRaid = clone(raid)
         const changeStage = newRaid.stages.find((s) => s.title === stage.title)

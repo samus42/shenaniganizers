@@ -3,10 +3,9 @@ import differenceBy from 'lodash.differenceby'
 import React, { useEffect, useState } from 'react'
 import isEmpty from 'lodash.isempty'
 import Grid from '@mui/material/Unstable_Grid2'
-import { Autocomplete, Box, TextField, FormControl, Typography, Select, MenuItem, InputLabel, Button, Snackbar, IconButton } from '@mui/material'
+import { Autocomplete, Box, TextField, FormControl, Typography, Select, MenuItem, InputLabel, Button } from '@mui/material'
 import { gql } from '@apollo/client'
 import raidClient from '../../api/raidClient'
-import CloseIcon from '@mui/icons-material/Close'
 
 function findEmote(name) {
     return allEmotes.find((emote) => emote.name === name)
@@ -90,7 +89,7 @@ export function EmoteActions({ currentUser, onSave, onCancel, configId }) {
     const [threeDirection, setThreeDirection] = useState('')
     const [fourDirection, setFourDirection] = useState('')
     const [canWrite, setCanWrite] = useState(false)
-    const [saveMessage, setSaveMessage] = useState(null)
+
     const selected = [upEmote, leftEmote, downEmote, rightEmote].filter((i) => i)
     const basicSelected = [yesDirection, noDirection]
     const countSelected = [oneDirection, twoDirection, threeDirection, fourDirection]
@@ -119,11 +118,13 @@ export function EmoteActions({ currentUser, onSave, onCancel, configId }) {
                 }`
                 const { data } = await raidClient.query({ query, variables: { configId }, fetchPolicy: 'network-only' })
                 setLoadedConfig(data.config)
-                if (currentUser && currentUser.name === data.config.player.name) {
+                if (currentUser && currentUser.destinyId === data.config.player.destinyId) {
                     setCanWrite(true)
                 }
             }
             loadConfig()
+        } else {
+            setCanWrite(true)
         }
     }, [configId, currentUser])
     useEffect(() => {
@@ -260,26 +261,7 @@ export function EmoteActions({ currentUser, onSave, onCancel, configId }) {
                 <Button sx={{ marginLeft: '20px' }} variant='contained' onClick={onCancel}>{canWrite ? 'Cancel' : 'Go Back'}</Button>
             </div>
             {canWrite ? showWritable() : showReadOnly()}
-            <Snackbar
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center'
-                }}
-                open={!!saveMessage}
-                onClose={evt => setSaveMessage(null)}
-                message={saveMessage}
-                autoHideDuration={6000}
-                action={
-                    <IconButton
-                        size="small"
-                        aria-label="close"
-                        color="inherit"
-                        onClick={evt => setSaveMessage(null)}
-                    >
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                }
-            />
+
         </div>
     )
 }

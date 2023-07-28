@@ -2,7 +2,6 @@ const _ = require('lodash')
 const { getEmoteConfigsCollection, getObjectID, formatOutput } = require('../mongo')
 
 const saveEmoteConfig = async (emoteConfig) => {
-    // console.log('saving: ', raid)
     const collection = await getEmoteConfigsCollection()
 
     if (emoteConfig.id) {

@@ -14,7 +14,6 @@ const KeyValue = ({ label, value }) => (
 )
 const LostSector = ({ date }) => {
     const lostSector = getLostSector(date)
-    console.log('ls: ', lostSector)
     return (
         <div>
             <Typography variant="h5">Lost Sector</Typography>

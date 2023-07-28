@@ -13,6 +13,7 @@ let db = null
 const postfix = env === 'testing' ? '_it' : ''
 const raidsCollectionName = `raids${postfix}`
 const activitiesCollectionName = `activities${postfix}`
+const emoteConfigsCollectionName = `emotes${postfix}`
 let connecting = false
 
 const getDB = async () => {
@@ -42,6 +43,11 @@ const getActivitiesCollection = async () => {
     return db.collection(activitiesCollectionName)
 }
 
+const getEmoteConfigsCollection = async () => {
+    const db = await getDB()
+    return db.collection(emoteConfigsCollectionName)
+}
+
 const getObjectID = (id) => {
     return new ObjectId(id)
 }
@@ -50,4 +56,4 @@ const formatOutput = (obj) => {
     if (!obj) return obj
     return _.extend(_.omit(obj, '_id'), { id: obj._id.toString() })
 }
-module.exports = { getDB, getActivitiesCollection, getRaidsCollection, client, getObjectID, formatOutput }
+module.exports = { getDB, getActivitiesCollection, getRaidsCollection, getEmoteConfigsCollection, client, getObjectID, formatOutput }

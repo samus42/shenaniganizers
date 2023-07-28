@@ -13,6 +13,7 @@ import DisciplePuzzle from './tools/disciple/DisciplePuzzle';
 import TakenKingChestPuzzle from './tools/takenking/ChestPuzzle';
 import { BlogMain } from './blog';
 import { EmoteActions } from './tools/emotes/EmoteActions';
+import { ManageEmoteConfigs } from './tools/emotes/ManageEmoteConfigs';
 
 const Main = (props) => {
     return (
@@ -39,7 +40,8 @@ const Main = (props) => {
                 </Route>
                 <Route path="/public/tools/disciple-puzzle" element={<DisciplePuzzle />} />
                 <Route path="/public/tools/tkk-puzzle" element={<TakenKingChestPuzzle />} />
-                <Route path="/emote" element={<EmoteActions />} />
+                <Route path="/tools/emotes/:configId" element={<ManageEmoteConfigs />} />
+                <Route path="/tools/emotes" element={<ManageEmoteConfigs />} />
             </Routes>
         </Router>
     )

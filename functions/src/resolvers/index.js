@@ -9,6 +9,9 @@ const loadActivity = require('../data/activities/loadActivity')
 const archiveActivity = require('../data/activities/archiveActivity')
 const getActivities = require('../data/activities/getActivities')
 const { sendRaidMessage, sendActivityMessage } = require('../discord/webhook')
+const getEmoteConfigs = require('../data/emotes/getEmoteConfigs')
+const loadEmoteConfig = require('../data/emotes/loadEmoteConfig')
+const saveEmoteConfig = require('../data/emotes/saveEmoteConfig')
 
 const resolvers = {
     Query: {
@@ -29,6 +32,12 @@ const resolvers = {
         },
         listActivities() {
             return getActivities()
+        },
+        listEmoteConfigs() {
+            return getEmoteConfigs()
+        },
+        getEmoteConfig(root, { id }) {
+            return loadEmoteConfig(id)
         }
     },
     Mutation: {
@@ -95,6 +104,9 @@ const resolvers = {
         },
         archiveActivity(root, { id }) {
             return archiveActivity(id)
+        },
+        saveEmoteConfig(root, { emoteConfig }) {
+            return saveEmoteConfig(emoteConfig)
         }
     }
 }

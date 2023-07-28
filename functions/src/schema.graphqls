@@ -59,6 +59,28 @@ type Raid {
     version: Int
 }
 
+enum EmoteDirection {
+    up,
+    down,
+    left,
+    right
+}
+
+type EmoteConfig {
+    id: ID
+    player: DestinyPlayer
+    upEmote: String,
+    downEmote: String,
+    leftEmote: String,
+    rightEmote: String,
+    yes: EmoteDirection,
+    no: EmoteDirection,
+    one: EmoteDirection,
+    two: EmoteDirection,
+    three: EmoteDirection,
+    four: EmoteDirection
+}
+
 type Query {
     version: String
     raids: [Raid]
@@ -67,6 +89,8 @@ type Query {
     userRaidHistory(destinyId: String): [Raid]
     listActivities: [Activity]
     getActivity(id: ID): Activity
+    listEmoteConfigs: [EmoteConfig]
+    getEmoteConfig(id: String): EmoteConfig
 }
 
 input DestinyPlayerInput {
@@ -122,9 +146,25 @@ input ActivityInput {
     version: Int
 }
 
+input EmoteConfigInput {
+    id: ID
+    player: DestinyPlayerInput!
+    upEmote: String,
+    downEmote: String,
+    leftEmote: String,
+    rightEmote: String,
+    yes: EmoteDirection,
+    no: EmoteDirection,
+    one: EmoteDirection,
+    two: EmoteDirection,
+    three: EmoteDirection,
+    four: EmoteDirection
+}
+
 type Mutation {
     saveRaid(raid: RaidInput!) : Raid
     saveActivity(activity: ActivityInput!): Activity
     archiveRaid(id: ID!): Raid
     archiveActivity(id: ID!): Activity
+    saveEmoteConfig(emoteConfig: EmoteConfigInput!): EmoteConfig
 }

@@ -41,7 +41,9 @@ const loyaltysTest = {
     author: samus,
     icon: samusIcon,
     title: `Loyalty's Test`,
-    subtext: 'Coming Fall 2023'
+    subtext: 'Just Released!',
+    pdf: 'https://drive.google.com/file/d/15HrrKAcA5Q-T3e1_gINCEQkdzkRC0Uj-/view?usp=sharing',
+    epub: 'https://drive.google.com/file/d/1zB1JFjuAJ3pXeI3JobDg9BySBUrTl7uH/view?usp=sharing'
 }
 const threadsOfDeceit = {
     author: samus,
@@ -66,10 +68,15 @@ const worstHunter = {
     author: tansy,
     icon: tansyIcon,
     title: 'The Worst Hunter',
-    subtext: 'Just released!',
     pdf: 'https://drive.google.com/file/d/12svAXAL4Y8UccfMK1iNVrfgqJxpHFaTQ/view?usp=share_link'
 }
-
+const defectiveTitan = {
+    author: tansy,
+    icon: tansyIcon,
+    title: 'The Defective Titan',
+    subtext: 'Just Released!',
+    pdf: 'https://drive.google.com/file/d/1yWN5b4Rn5ztTiNF6CotOfVa8rAuiBpF_/view?usp=sharing'
+}
 function BookItem({ book, onClick }) {
     return (
         <TimelineItem>
@@ -84,7 +91,7 @@ function BookItem({ book, onClick }) {
             </TimelineSeparator>
             <TimelineContent>
                 {book.pdf ? (
-                    <Typography variant="h6"><Link onClick={(evt) => onClick(evt, book)}>{book.title}</Link></Typography>
+                    <Typography variant="h6"><Link className='book-link' onClick={(evt) => onClick(evt, book)}>{book.title}</Link></Typography>
                 ) :
                     (
                         <Typography variant="h6">{book.title}</Typography>
@@ -157,7 +164,8 @@ export default function Books() {
                 <BookItem book={darkBalance} onClick={onBookClick} />
                 <BookItem book={worstHunter} onClick={onBookClick} />
                 <EventItem event="Forsaken" />
-                <BookItem book={loyaltysTest} />
+                <BookItem book={loyaltysTest} onClick={onBookClick} />
+                <BookItem book={defectiveTitan} onClick={onBookClick} />
                 <BookItem book={redjackThief} onClick={onBookClick} />
                 <BookItem book={threadsOfDeceit} />
                 <BookItem book={thornOfDarkness} />

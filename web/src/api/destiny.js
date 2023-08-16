@@ -1,6 +1,7 @@
 import agent from 'superagent'
 import sortBy from 'lodash.sortby'
 import uniqBy from 'lodash.uniqby'
+import isEmpty from 'lodash.isempty'
 import dayjs from 'dayjs'
 
 const header = { 'X-API-KEY': import.meta.env.VITE_API_KEY }
@@ -60,6 +61,9 @@ export const searchUsers = async (prefix) => {
     const { body } = await agent.post(url).set(header).send(payload)
     const { Response } = body
     const users = Response.searchResults.map(({ destinyMemberships }) => {
+        if (isEmpty(destinyMemberships)) {
+            return null
+        }
         const first = destinyMemberships[0]
         return {
             name: first.displayName,
@@ -67,5 +71,5 @@ export const searchUsers = async (prefix) => {
             iconPath: `${baseUrl}/${first.iconPath}`
         }
     })
-    return users
+    return users.filter((u) => u)
 }

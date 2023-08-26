@@ -17,7 +17,8 @@ const SelectNonClanMember = ({ fullScreen = false, onSelected = () => { }, disab
             if (isEmpty(users)) {
                 setFoundUser(null)
             } else {
-                setFoundUser(users[0])
+                const exactMatch = users.find(({ name }) => name === searchText)
+                setFoundUser(exactMatch ? exactMatch : users[0])
             }
         } catch (err) {
             console.error(err)

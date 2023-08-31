@@ -33,7 +33,7 @@ const EventListItem = (({ activity, onClick }) => (
     <ListItemButton onClick={onClick}>
         <ListItemText
             primary={activity.instanceName}
-            secondary={`${dayjs(activity.date).format('MM/DD/YYYY hh:mm:ss a')}`}
+            secondary={`${dayjs(activity.date).format('MM/DD/YYYY hh:mm a')}`}
         />
         <ListItemText secondary={activity.activityName} />
     </ListItemButton>

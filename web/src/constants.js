@@ -1,7 +1,8 @@
 export const Elements = {
     Solar: 'Solar',
     Arc: 'Arc',
-    Void: 'Void'
+    Void: 'Void',
+    Unkonwn: 'Unknown'
 }
 
 export const Champions = {

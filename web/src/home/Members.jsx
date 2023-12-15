@@ -93,6 +93,9 @@ const Nutbar = () => (
 const ThirdEye = () => (
     <MemberCard name="ThirdEye" iconUrl="https://www.bungie.net/img/profile/avatars/odst_skull_fire.png">
         <div className="member-detail">
+            <strong>King of the Sparrow Kills</strong>
+        </div>
+        <div className="member-detail">
             <div><strong>Q:</strong><span> What do you use when fighting Fallen?</span></div>
             <div><strong>A:</strong><span> A bow.</span></div>
             <div><strong>Q:</strong><span> What do you use when fighting an armored boss?</span></div>
@@ -136,6 +139,9 @@ const Mabie = () => (
         <div className="member-detail">
             <div>Mabie, where did you go? We just started this jumping puzzle.</div>
             <div><span style={{ fontStyle: 'italic' }}>"@#$@ that. I'm in orbit."</span></div>
+        </div>
+        <div className="member-detail">
+            <div><span style={{ fontStyle: 'italic' }}>Woof, woof, mother@$#@#er.</span>{' (exact quote)'}</div>
         </div>
     </MemberCard>
 )

@@ -68,6 +68,7 @@ const sinsOfTheKeepers = {
     author: ace,
     icon: aceIcon,
     title: "Sins of the Keepers",
+    subtext: 'Just Released!',
     pdf: "https://drive.google.com/file/d/1EDM8uXQJZwobyVhlv5lMJ5aLFhtizPfS/view?usp=drive_link"
 }
 const worstHunter = {

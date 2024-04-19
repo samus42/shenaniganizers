@@ -64,6 +64,12 @@ const redjackThief = {
     pdf: 'https://drive.google.com/file/d/18fRu74TJTExGUI4KuevNN-OkAkOsp4IC/view?usp=sharing',
     epub: 'https://drive.google.com/file/d/1C98vmkwY-598Cm1OGHjrUpHkbsS7XoYP/view?usp=sharing'
 }
+const sinsOfTheKeepers = {
+    author: ace,
+    icon: aceIcon,
+    title: "Sins of the Keepers",
+    pdf: "https://drive.google.com/file/d/1EDM8uXQJZwobyVhlv5lMJ5aLFhtizPfS/view?usp=drive_link"
+}
 const worstHunter = {
     author: tansy,
     icon: tansyIcon,
@@ -167,6 +173,7 @@ export default function Books() {
                 <BookItem book={loyaltysTest} onClick={onBookClick} />
                 <BookItem book={defectiveTitan} onClick={onBookClick} />
                 <BookItem book={redjackThief} onClick={onBookClick} />
+                <BookItem book={sinsOfTheKeepers} onClick={onBookClick} />
                 <BookItem book={threadsOfDeceit} />
                 <BookItem book={thornOfDarkness} />
                 <EventItem event="Shadowkeep" />

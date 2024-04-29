@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { getWellspring } from "./wellspring"
 import { getLostSector } from "./lostSectors"
 import { getLegendActivity } from "./legendActivities"
+import { getOnslaught } from "./onslaught"
 
 const KeyValue = ({ label, value }) => (
     <div style={{ display: 'flex' }}>
@@ -36,6 +37,18 @@ const Wellspring = ({ date }) => {
             <div style={{ paddingLeft: '10px' }}>
                 <div><strong>{wellspring.stage}</strong> ({wellspring.boss})</div>
                 <div>Reward: {wellspring.reward}</div>
+            </div>
+        </div>
+    )
+}
+
+const Onslaught = ({ date }) => {
+    const onslaught = getOnslaught(date)
+    return (
+        <div>
+            <Typography variant="h5">Onslaught</Typography>
+            <div style={{ paddingLeft: '10px' }}>
+                <div><strong>{onslaught.boss}</strong> </div>
             </div>
         </div>
     )
@@ -80,8 +93,11 @@ const DisplayRotation = () => {
                 <div>
                     <LostSector date={selectedDate} />
                 </div>
-                <div style={{ marginTop: '20px' }}>
+                {/* <div style={{ marginTop: '20px' }}>
                     <Wellspring date={selectedDate} />
+                </div> */}
+                <div style={{ marginTop: '20px' }}>
+                    <Onslaught date={selectedDate} />
                 </div>
             </div>
             <div style={{ marginTop: '20px' }}>

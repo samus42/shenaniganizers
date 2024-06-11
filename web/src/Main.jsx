@@ -14,6 +14,7 @@ import TakenKingChestPuzzle from './tools/takenking/ChestPuzzle';
 import { BlogMain } from './blog';
 import { EmoteActions } from './tools/emotes/EmoteActions';
 import { ManageEmoteConfigs } from './tools/emotes/ManageEmoteConfigs';
+import { EventMain } from './events/eventMain.jsx';
 
 const Main = (props) => {
     return (
@@ -26,6 +27,7 @@ const Main = (props) => {
                 <Route exact path="/help/calendar" element={<CalendarInstructions />} />
                 <Route exact path="/raid/:raidKey" element={<RaidMain />} />
                 <Route exact path="/activity/:activityKey" element={<ActivityMain />} />
+                <Route exact path="/event/:activityKey" element={<EventMain />} />
                 <Route exact path="/profile" element={<Profile />} />
                 <Route exact path="/process-login" element={<ProcessLogin />} />
                 <Route path="/tools/disciple" element={<DiscipleSymbols />}>

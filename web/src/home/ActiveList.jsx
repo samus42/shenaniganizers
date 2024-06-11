@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
     List,
     ListItemText,
@@ -11,6 +11,7 @@ import raidClient from '../api/raidClient'
 import gql from 'graphql-tag'
 import dayjs from 'dayjs'
 import sortBy from 'lodash.sortby'
+import { SelectActivity, SelectActivityDialogButton } from '../events/SelectActivity'
 
 const query = gql`
     query {
@@ -84,6 +85,9 @@ const EventList = ({ onChooseActivity }) => {
             <Typography variant="h4">Upcoming events</Typography>
             <div style={{ marginTop: '10px' }}>
                 <Button style={{ width: '100%' }} variant="contained" onClick={onChooseActivity}>Organize An Activity</Button>
+            </div>
+            <div style={{ marginTop: '10px' }}>
+                <Link to={"/event/new"}><Button fullWidth variant="outlined">Alpha Activity Creation</Button></Link>
             </div>
             {events.length < 1 && (<div>No active events, you should schedule one!</div>)}
             <List>

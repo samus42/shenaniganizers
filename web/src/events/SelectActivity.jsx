@@ -10,7 +10,7 @@ function ActivityCard({ activity, onClick }) {
                 <CardMedia sx={{ width: '80px' }} component="img" image={activity.imagePath}></CardMedia>
                 <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography variant="h5">{activity.title}</Typography>
-                    <Typography variant="subtitle1">{activity.game}</Typography>
+                    <Typography variant="subtitle1">{`${activity.game} - ${activity.type}`}</Typography>
                 </CardContent>
             </CardActionArea>
         </Card>

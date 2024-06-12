@@ -2,12 +2,36 @@ import React, { useEffect, useState } from 'react'
 import differenceBy from 'lodash.differenceby'
 import isEmpty from 'lodash.isempty'
 import { getClanRoster } from '../../api/destiny'
-import { TextField, Button, List, ListItem, IconButton, Autocomplete } from '@mui/material'
+import { TextField, Button, List, ListItem, IconButton, Autocomplete, Grid, Typography } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/PersonRemove'
 import { v4 as uuid } from 'uuid'
 
 const normalizeId = (destinyPlayer) => {
     return { name: destinyPlayer.name, id: destinyPlayer.destinyId, type: 'destiny' }
+}
+
+function PlayerList({ title, players, onDelete }) {
+    return (
+        <>
+            <div style={{ paddingLeft: '10px' }}>
+                <strong>{title}</strong>
+            </div>
+            {isEmpty(players) ? (<Typography sx={{ paddingLeft: '10px', fontStyle: "italic" }}>No Players Selected</Typography>) : (
+                <List>
+                    {players.map((player) => (
+                        <ListItem span={4} key={player.name}
+                            secondaryAction={
+                                <IconButton edge="end" aria-label="delete" onClick={() => onDelete(player)}>
+                                    <DeleteIcon />
+                                </IconButton>
+                            }>
+                            <span>{player.name}</span>
+                        </ListItem>
+                    ))}
+                </List>
+            )}
+        </>
+    )
 }
 const DesktopRoster = ({ roster = [], backupRoster = [], excludeList, onRosterChange, onBackupRosterChange, activity, maxPlayers }) => {
     const [destinyRoster, setDestinyRoster] = useState([])
@@ -92,41 +116,45 @@ const DesktopRoster = ({ roster = [], backupRoster = [], excludeList, onRosterCh
                 <Button variant="contained" disabled={(isEmpty(manualPlayerName) && !selectedDestinyPlayer) || atLimit()} onClick={onAddPlayer}>Add Active</Button>
                 <Button variant="outlined" disabled={(isEmpty(manualPlayerName) && !selectedDestinyPlayer)} onClick={onAddBackup}>Add Backup</Button>
             </div>
-            <div style={{ paddingTop: '10px' }}>
-                <div style={{ paddingLeft: '10px' }}>
-                    <strong>{`${Math.max(0, maxPlayers - roster.length)} active slots available`}</strong>
-                </div>
-                <List>
-                    {roster.map((player) => (
-                        <ListItem span={4} key={player.name}
-                            secondaryAction={
-                                <IconButton edge="end" aria-label="delete" onClick={() => onRemovePlayer(player)}>
-                                    <DeleteIcon />
-                                </IconButton>
-                            }>
-                            <span>{player.name}</span>
-                        </ListItem>
-                    ))}
-                </List>
-            </div>
-            <div>
-                <div style={{ paddingLeft: '10px' }}>
-                    <strong>Backups</strong>
-                </div>
-                <List>
-                    {backupRoster.map((player) => (
-                        <ListItem span={4} key={player.name}
-                            secondaryAction={
-                                <IconButton edge="end" aria-label="delete" onClick={() => onRemoveBackup(player)}>
-                                    <DeleteIcon />
-                                </IconButton>
-                            }>
-                            <span>{player.name}</span>
-                        </ListItem>
-                    ))}
-                </List>
-            </div>
-        </div >
+            <Grid sx={{ marginTop: '10px' }} container spacing={2}>
+                <Grid item xs="12" md="6">
+                    <PlayerList title={`${Math.max(0, maxPlayers - roster.length)} active slots available`} players={roster} onDelete={onRemovePlayer} />
+                    {/* <div style={{ paddingLeft: '10px' }}>
+                        <strong>{`${Math.max(0, maxPlayers - roster.length)} active slots available`}</strong>
+                    </div>
+                    <List>
+                        {roster.map((player) => (
+                            <ListItem span={4} key={player.name}
+                                secondaryAction={
+                                    <IconButton edge="end" aria-label="delete" onClick={() => onRemovePlayer(player)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                }>
+                                <span>{player.name}</span>
+                            </ListItem>
+                        ))}
+                    </List> */}
+                </Grid>
+                <Grid item xs="12" md="6">
+                    <PlayerList title="Backups" players={backupRoster} onDelete={onRemoveBackup} />
+                    {/* <div style={{ paddingLeft: '10px' }}>
+                        <strong>Backups</strong>
+                    </div>
+                    <List>
+                        {backupRoster.map((player) => (
+                            <ListItem span={4} key={player.name}
+                                secondaryAction={
+                                    <IconButton edge="end" aria-label="delete" onClick={() => onRemoveBackup(player)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                }>
+                                <span>{player.name}</span>
+                            </ListItem>
+                        ))}
+                    </List> */}
+                </Grid>
+            </Grid>
+        </div>
     )
 }
 

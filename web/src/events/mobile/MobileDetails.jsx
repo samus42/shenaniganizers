@@ -9,13 +9,13 @@ const MobileDetails = ({ instanceName, date, maxPlayers, saveEnabled, activity, 
     console.log('activity: ', activity)
     return (
         <div>
-            <div style={{ textAlign: 'center', paddingTop: '10px', paddingBottom: '10px' }}><Button variant="contained" disabled={!saveEnabled} onClick={debouncedSave}>Save Changes</Button></div>
+            <div style={{ textAlign: 'center', paddingTop: '10px', paddingBottom: '10px' }}><Button fullWidth variant="contained" disabled={!saveEnabled} onClick={debouncedSave}>Save Changes</Button></div>
 
-            <div style={{ paddingTop: '50px', display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+            <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                 <Typography variant="h5">{activity.title}</Typography>
                 <SelectActivityDialogButton buttonText='Change' onSelect={(act) => { onChangeActivity(act) }} onCancel={() => { }} />
             </div>
-            <div style={{ paddingTop: '50px' }}>
+            <div style={{ paddingTop: '40px' }}>
                 <TextField fullWidth label="Create a name for this activity!" value={instanceName} onChange={(evt) => onChange({ instanceName: evt.target.value, date, maxPlayers })} />
             </div>
             <div style={{ paddingTop: '50px' }}>

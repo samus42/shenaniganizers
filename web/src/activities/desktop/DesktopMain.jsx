@@ -34,7 +34,7 @@ const DesktopMain = ({ roster, date, instanceName, maxPlayers, activity, saveEna
                         <Slider value={maxPlayers} min={1} max={10} step={1} marks onChange={(evt, newValue) => onDetailsChange({ instanceName, date, maxPlayers: newValue })}></Slider>
                     </div>
                     <div style={{ paddingTop: '30px' }}>
-                        <Button variant="contained" disabled={!saveEnabled} onClick={debouncedSave}>Save Changes</Button>
+                        <Button variant="contained" fullWidth disabled={!saveEnabled} onClick={debouncedSave}>Save Changes</Button>
                     </div>
                     {activity.id && <div style={{ marginTop: '50px' }}>
                         <Button onClick={onArchive} variant="contained">Archive Activity To Remove From Active List</Button>

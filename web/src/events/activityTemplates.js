@@ -41,7 +41,7 @@ const Custom = {
     }
 }
 
-const createActivity = (template, title, imagePath, target) => ({ game: template.game, type: template.type, maxPlayers: template.maxPlayers, options: template.options, title, imagePath, target })
+const createActivity = (template, title, imagePath, target) => ({ game: template.game, type: template.type, maxPlayers: template.maxPlayers, options: template.options, title, imagePath, target, active: true })
 export function getActivities() {
     return [
         createActivity(DestinyRaid, 'Root of Nightmares', '/activities/nightmares.png', '/raid/nightmare'),

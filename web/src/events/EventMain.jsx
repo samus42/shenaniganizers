@@ -18,6 +18,7 @@ export function EventMain() {
     const [maxPlayers, setMaxPlayers] = useState(6)
     const [date, setDate] = useState(new Date())
     const [currentRoster, setCurrentRoster] = useState([])
+    const [backupRoster, setBackupRoster] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [saveEnabled, setSaveEnabled] = useState(false)
     const [saveMessage, setSaveMessage] = useState(null)
@@ -38,11 +39,18 @@ export function EventMain() {
         return () => window.removeEventListener('resize', updateSize);
     }, [])
 
+    useEffect(() => {
+        if (activity) {
+            setMaxPlayers(activity.maxPlayers)
+            // TODO: if current roster is now larger than max players, move to backup
+        }
+    }, [activity])
+
     const onDetailsChange = (details) => {
         setInstanceName(details.instanceName)
         setDate(details.date)
         setMaxPlayers(details.maxPlayers)
-        setSaveEnabled(!isEmpty(details.instanceName.trim()) && details.date)
+        setSaveEnabled(!isEmpty(details.instanceName?.trim()) && details.date)
     }
 
     const performSave = async (activityData) => {
@@ -62,6 +70,7 @@ export function EventMain() {
         }
     }
     const onSave = async () => {
+        setSaveMessage("Only pretending to save on this alpha build, sorry.")
         // await performSave({ ...activity, players: currentRoster, instanceName, date: date.toISOString(), maxPlayers })
     }
 
@@ -73,10 +82,16 @@ export function EventMain() {
     const onRosterChange = async (newRoster, saveData = false) => {
         setCurrentRoster(newRoster)
         if (saveEnabled) {
-            await performSave({ ...activity, players: newRoster, instanceName, date })
+            // await performSave({ ...activity, players: newRoster, instanceName, date })
         }
     }
 
+    const onBackupRosterChange = async (newBackups, saveData = false) => {
+        setBackupRoster(newBackups)
+        if (saveEnabled) {
+            // await performSave({ ...activity, backups: newBackups, instanceName, date }) 
+        }
+    }
     const onErrorDialogClose = (action) => {
         if (action === 'reload') {
             //refresh page
@@ -86,8 +101,6 @@ export function EventMain() {
         setError(null)
     }
 
-    console.log('activityKey: ', activityKey)
-    console.log('activity', activity)
     if (activityKey === 'new' && !activity) {
         return (
             <div style={{ paddingTop: '10px' }}>
@@ -107,16 +120,21 @@ export function EventMain() {
             <ErrorDialog error={error} onClose={onErrorDialogClose} />
             <ViewComponent
                 roster={currentRoster}
+                backupRoster={backupRoster}
                 date={date}
                 instanceName={instanceName}
                 maxPlayers={maxPlayers}
                 activity={activity}
                 saveEnabled={saveEnabled}
-                onChangeActivity={(updated) => setActivity(updated)}
+                onChangeActivity={(updated) => {
+                    console.log('new: ', updated)
+                    setActivity(updated)
+                }}
                 onSave={onSave}
                 onArchive={onArchive}
                 onDetailsChange={onDetailsChange}
                 onRosterChange={onRosterChange}
+                onBackupRosterChange={onBackupRosterChange}
             />
             <Snackbar
                 anchorOrigin={{

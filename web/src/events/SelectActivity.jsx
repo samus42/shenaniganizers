@@ -62,11 +62,11 @@ export function SelectActivity({ onSelect, onCancel }) {
     )
 }
 
-export function SelectActivityDialogButton({ onSelect, onCancel }) {
+export function SelectActivityDialogButton({ onSelect, onCancel, buttonText = "Select Activity", buttonVariant = "outlined" }) {
     const [open, setOpen] = useState(false)
     return (
         <>
-            <Button onClick={() => setOpen(true)}>Select Activity</Button>
+            <Button variant={buttonVariant} onClick={() => setOpen(true)}>{buttonText}</Button>
             <Dialog open={open} onClose={() => setOpen(false)} fullScreen>
                 <DialogContent>
                     <SelectActivity

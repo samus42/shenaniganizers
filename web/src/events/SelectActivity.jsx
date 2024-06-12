@@ -21,6 +21,7 @@ export function SelectActivity({ onSelect, onCancel }) {
     const [activities, setActivities] = useState([])
     const [filteredActivities, setFilteredActivities] = useState([])
     const [gameFilter, setGameFilter] = useState('All')
+    const [typeFilter, setTypeFilter] = useState('All')
     useEffect(() => {
         const data = getActivities()
         setActivities(data)
@@ -30,10 +31,21 @@ export function SelectActivity({ onSelect, onCancel }) {
         let newList = activities
         if (gameFilter !== 'All') {
             newList = activities.filter(({ game }) => game === gameFilter)
+
+            if (typeFilter !== 'All') {
+                newList = newList.filter(({ type }) => type === typeFilter)
+            }
         }
         setFilteredActivities(_.sortBy(newList, 'title'))
-    }, [activities, gameFilter])
+    }, [activities, gameFilter, typeFilter])
 
+    const onChangeGameFilter = (newVal) => {
+        setTypeFilter('All')
+        setGameFilter(newVal)
+    }
+    const getGameTypes = () => {
+        return _.uniq(_.map(filteredActivities, 'type')).sort()
+    }
     return (
         <div>
             <div>
@@ -42,7 +54,7 @@ export function SelectActivity({ onSelect, onCancel }) {
             <div style={{ marginTop: '10px', marginBottom: '10px', display: 'flex' }}>
                 <FormControl fullWidth>
                     <InputLabel id="game-select-label">Game</InputLabel>
-                    <Select labelId="game-select-label" label="Game" value={gameFilter} onChange={(evt) => setGameFilter(evt.target.value)}>
+                    <Select labelId="game-select-label" label="Game" value={gameFilter} onChange={(evt) => onChangeGameFilter(evt.target.value)}>
                         <MenuItem value="All">All</MenuItem>
                         {getGames().map((game) => (
                             <MenuItem key={game} value={game}>{game}</MenuItem>
@@ -50,7 +62,19 @@ export function SelectActivity({ onSelect, onCancel }) {
                     </Select>
                 </FormControl>
             </div>
-
+            {gameFilter !== 'All' && (
+                <div style={{ marginTop: '10px', marginBottom: '10px', display: 'flex' }}>
+                    <FormControl fullWidth>
+                        <InputLabel id="game-select-label">Types</InputLabel>
+                        <Select labelId="game-select-label" label="Types" value={typeFilter} onChange={(evt) => setTypeFilter(evt.target.value)}>
+                            <MenuItem value="All">All</MenuItem>
+                            {getGameTypes().map((type) => (
+                                <MenuItem key={type} value={type}>{type}</MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                </div>
+            )}
             <Grid container spacing={2}>
                 {filteredActivities.map((activity) => (
                     <Grid xs={12} md={6} item key={activity.title}>

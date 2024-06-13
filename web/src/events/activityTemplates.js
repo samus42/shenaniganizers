@@ -70,6 +70,7 @@ export function getActivities() {
         createActivity(DestinyRaid, "Deep Stone Crypt", "/activities/deepstonecrypt.png"),
         createActivity(DestinyRaid, "Garden Of Salvation", "/activities/garden.png"),
         createActivity(DestinyRaid, "Last Wish", "/activities/lastwish.png"),
+        createActivity(DestinyRaid, "Salvation's Edge", "/activities/salvations-edge.png"),
         createActivity(AmongUs, "Among Us", "/activities/amongus.png"),
         createActivity(Custom, "Custom Activity", "/activities/custom.png"),
         createActivity(DestinyRaid, `Crota's End`, "/activities/crota.png"),

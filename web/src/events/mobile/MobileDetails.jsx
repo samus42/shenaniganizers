@@ -12,6 +12,7 @@ const MobileDetails = ({ instanceName, date, maxPlayers, saveEnabled, activity, 
             <div style={{ textAlign: 'center', paddingTop: '10px', paddingBottom: '10px' }}><Button fullWidth variant="contained" disabled={!saveEnabled} onClick={debouncedSave}>Save Changes</Button></div>
 
             <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                <img src={activity.imagePath} alt={activity.name} style={{ width: '32px' }} />
                 <Typography variant="h5">{activity.title}</Typography>
                 <SelectActivityDialogButton buttonText='Change' onSelect={(act) => { onChangeActivity(act) }} onCancel={() => { }} />
             </div>

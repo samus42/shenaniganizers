@@ -10,6 +10,7 @@ export function DesktopMain({ roster, backupRoster, date, instanceName, maxPlaye
     return (
         <div style={{ paddingLeft: '20px' }}>
             <Stack direction="row" spacing={2} style={{ paddingTop: '50px', width: '100%' }}>
+                <img src={activity.imagePath} alt={activity.name} style={{ width: '32px' }} />
                 <Typography variant="h5">{activity.title}</Typography>
                 <SelectActivityDialogButton buttonText='Change' onSelect={(act) => { onChangeActivity(act) }} onCancel={() => { }} />
             </Stack>

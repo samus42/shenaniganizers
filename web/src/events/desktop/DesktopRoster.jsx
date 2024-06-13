@@ -5,6 +5,7 @@ import { getClanRoster } from '../../api/destiny'
 import { TextField, Button, List, ListItem, IconButton, Autocomplete, Grid, Typography } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/PersonRemove'
 import { v4 as uuid } from 'uuid'
+import { getCurrentUserInfo } from '../../user/currentUser'
 
 const normalizeId = (destinyPlayer) => {
     return { name: destinyPlayer.name, id: destinyPlayer.destinyId, type: 'destiny' }
@@ -38,19 +39,35 @@ const DesktopRoster = ({ roster = [], backupRoster = [], excludeList, onRosterCh
     const [filteredRoster, setFilteredRoster] = useState([])
     const [manualPlayerName, setManualPlayerName] = useState('')
     const [selectedDestinyPlayer, setSelectedDestinyPlayer] = useState(null)
+
+    useEffect(() => {
+        const user = getCurrentUserInfo()
+
+        if (isEmpty(manualPlayerName)) {
+            const found = filteredRoster.find((({ id }) => id === user.destinyId))
+            if (!!found && isEmpty(selectedDestinyPlayer)) {
+                setSelectedDestinyPlayer(found)
+            } else if (!found && selectedDestinyPlayer && selectedDestinyPlayer.id === user.destinyId) {
+                setSelectedDestinyPlayer(null)
+            }
+        }
+    }, [filteredRoster, manualPlayerName, selectedDestinyPlayer])
+
     useEffect(() => {
         const loadDestinyRoster = async () => {
             const results = await getClanRoster()
             const normalized = results.map(normalizeId)
             setDestinyRoster(normalized)
-            setFilteredRoster(differenceBy(results.map(normalizeId), roster, 'id'))
+            const filtered = differenceBy(results.map(normalizeId), roster, 'id')
+            setFilteredRoster(filtered)
         }
         loadDestinyRoster().catch(console.error)
     }, [excludeList, roster])
 
     useEffect(() => {
         const activeFiltered = differenceBy(destinyRoster, roster, 'id')
-        setFilteredRoster(differenceBy(activeFiltered, backupRoster, 'id'))
+        const allFiltered = differenceBy(activeFiltered, backupRoster, 'id')
+        setFilteredRoster(allFiltered)
     }, [roster, destinyRoster, backupRoster])
 
     const onSelectDestinyPlayer = (evt, player) => {

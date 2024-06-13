@@ -43,7 +43,7 @@ const DesktopRoster = ({ roster = [], backupRoster = [], excludeList, onRosterCh
     useEffect(() => {
         const user = getCurrentUserInfo()
 
-        if (isEmpty(manualPlayerName)) {
+        if (!!user && isEmpty(manualPlayerName)) {
             const found = filteredRoster.find((({ id }) => id === user.destinyId))
             if (!!found && isEmpty(selectedDestinyPlayer)) {
                 setSelectedDestinyPlayer(found)

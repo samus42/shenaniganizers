@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react'
 import debounce from 'lodash.debounce'
-import { TextField, Button, Slider, Typography } from '@mui/material'
+import { TextField, Button, Slider } from '@mui/material'
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { SelectActivityDialogButton } from '../SelectActivity';
 
 const MobileDetails = ({ instanceName, date, maxPlayers, saveEnabled, activity, onChange = () => { }, onSave = () => { }, onArchive = () => { }, onChangeActivity = () => { } }) => {
     const debouncedSave = useMemo(() => debounce(onSave, 300), [onSave])

@@ -9,6 +9,7 @@ import ErrorDialog from '../ErrorDialog'
 import isEmpty from 'lodash.isempty'
 import _ from 'lodash'
 import { SelectActivity } from './SelectActivity'
+import { getCurrentUserInfo } from '../user/currentUser'
 
 export function EventMain() {
     const [screenLayout, setScreenLayout] = useState('desktop')
@@ -60,6 +61,10 @@ export function EventMain() {
         }
         setIsLoading(true)
         if (activityKey === 'new') {
+            const user = getCurrentUserInfo()
+            if (user) {
+                setCurrentRoster([{ name: user.name, id: user.destinyId, type: 'destiny' }])
+            }
             setIsLoading(false)
             setSaveEnabled(false)
         } else {

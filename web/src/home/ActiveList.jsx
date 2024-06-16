@@ -87,11 +87,11 @@ const EventList = ({ onChooseActivity }) => {
     return (
         <div style={{ maxWidth: '500px' }}>
             <Typography variant="h4">Upcoming events</Typography>
-            <div style={{ marginTop: '10px' }}>
+            {/* <div style={{ marginTop: '10px' }}>
                 <Button style={{ width: '100%' }} variant="contained" onClick={onChooseActivity}>Organize An Activity</Button>
-            </div>
+            </div> */}
             <div style={{ marginTop: '10px' }}>
-                <Link to={"/event/new"}><Button fullWidth variant="outlined">Alpha Activity Creation</Button></Link>
+                <Link to={"/event/new"}><Button fullWidth variant="contained">Organize An Activity</Button></Link>
             </div>
             {events.length < 1 && (<div>No active events, you should schedule one!</div>)}
             <List>

@@ -13,13 +13,12 @@ export function EventMain() {
     const [screenLayout, setScreenLayout] = useState('desktop')
     const navigate = useNavigate()
     const [activity, setActivity] = useState(null)
-    const [title, setTitle] = useState('')
     const [instanceName, setInstanceName] = useState('')
     const [maxPlayers, setMaxPlayers] = useState(6)
     const [date, setDate] = useState(new Date())
     const [currentRoster, setCurrentRoster] = useState([])
     const [backupRoster, setBackupRoster] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [saveEnabled, setSaveEnabled] = useState(false)
     const [saveMessage, setSaveMessage] = useState(null)
     const [error, setError] = useState(null)
@@ -40,6 +39,34 @@ export function EventMain() {
     }, [])
 
     useEffect(() => {
+        const getActivity = async () => {
+            try {
+                console.log('loading: ', activityKey)
+                const loaded = await loadActivity(activityKey)
+                console.log('loaded: ', loaded)
+                setActivity(loaded)
+                setInstanceName(loaded.instanceName)
+                setDate(new Date(loaded.date))
+                setCurrentRoster(loaded.players)
+                setBackupRoster(loaded.backups)
+                setMaxPlayers(loaded.maxPlayers)
+                setIsLoading(false)
+                setSaveEnabled(true)
+            } catch (err) {
+                console.error(err)
+                setError(err)
+            }
+        }
+        setIsLoading(true)
+        if (activityKey === 'new') {
+            setIsLoading(false)
+            setSaveEnabled(false)
+        } else {
+            getActivity()
+        }
+    }, [activityKey, reloadFlag])
+
+    useEffect(() => {
         if (activity) {
             setMaxPlayers(activity.maxPlayers)
             // TODO: if current roster is now larger than max players, move to backup
@@ -55,11 +82,12 @@ export function EventMain() {
 
     const performSave = async (activityData) => {
         try {
+            console.log('saving:', activityData)
             const isNew = !activity.id
             const updated = await saveActivity(activityData)
             setActivity(updated)
             if (isNew) {
-                navigate(`/activity/${updated.id}`)
+                navigate(`/event/${updated.id}`)
                 setSaveMessage('Activity saved! You can now share the URL in the browser with others.')
             } else {
                 setSaveMessage('Activity updates saved!')
@@ -70,8 +98,7 @@ export function EventMain() {
         }
     }
     const onSave = async () => {
-        setSaveMessage("Only pretending to save on this alpha build, sorry.")
-        // await performSave({ ...activity, players: currentRoster, instanceName, date: date.toISOString(), maxPlayers })
+        await performSave({ ...activity, players: currentRoster, backups: backupRoster, instanceName, date: date.toISOString(), maxPlayers })
     }
 
     const onArchive = async () => {
@@ -82,14 +109,14 @@ export function EventMain() {
     const onRosterChange = async (newRoster, saveData = false) => {
         setCurrentRoster(newRoster)
         if (saveEnabled) {
-            // await performSave({ ...activity, players: newRoster, instanceName, date })
+            await performSave({ ...activity, players: newRoster, backups: backupRoster, instanceName, date })
         }
     }
 
     const onBackupRosterChange = async (newBackups, saveData = false) => {
         setBackupRoster(newBackups)
         if (saveEnabled) {
-            // await performSave({ ...activity, backups: newBackups, instanceName, date }) 
+            await performSave({ ...activity, players: currentRoster, backups: newBackups, instanceName, date })
         }
     }
     const onErrorDialogClose = (action) => {
@@ -128,7 +155,7 @@ export function EventMain() {
                 saveEnabled={saveEnabled}
                 onChangeActivity={(updated) => {
                     console.log('new: ', updated)
-                    setActivity(updated)
+                    setActivity({ ...updated, id: activity?.id, version: activity?.version })
                 }}
                 onSave={onSave}
                 onArchive={onArchive}

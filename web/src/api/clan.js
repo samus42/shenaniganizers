@@ -82,9 +82,12 @@ const loadActivityQuery = gql`
     }
     query ($id: ID!) {
         activity: getActivity(id: $id) {
-            id, type, instanceName, date, active
+            id, game, type, activityName, instanceName, imagePath, date, active
             maxPlayers, info, version
             players {
+                ...ActivityPlayerInfo
+            }
+            backups {
                 ...ActivityPlayerInfo
             }
         }

@@ -11,7 +11,6 @@ import raidClient from '../api/raidClient'
 import gql from 'graphql-tag'
 import dayjs from 'dayjs'
 import sortBy from 'lodash.sortby'
-import { SelectActivity, SelectActivityDialogButton } from '../events/SelectActivity'
 
 const query = gql`
     query {
@@ -24,6 +23,7 @@ const query = gql`
         activities: listActivities {
             id
             type
+            game
             activityName
             instanceName
             date
@@ -75,7 +75,11 @@ const EventList = ({ onChooseActivity }) => {
     }
     const onSelectEvent = (event) => {
         if (event.eventType === 'activity') {
-            navigate(`/activity/${event.id}`)
+            if (event.game) {
+                navigate(`/event/${event.id}`)
+            } else {
+                navigate(`/activity/${event.id}`)
+            }
         } else {
             navigate(`/raid/${event.id}`)
         }

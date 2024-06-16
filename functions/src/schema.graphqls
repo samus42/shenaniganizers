@@ -15,12 +15,21 @@ type ActivityPlayer {
     type: String
 }
 
+type ActivityOptions {
+    canChangeTitle: Boolean
+    canSetMaxPlayers: Boolean
+}
+
 type Activity {
     id: ID
+    game: String
     type: String
     instanceName: String
     activityName: String
+    options: ActivityOptions
+    imagePath: String
     players: [ActivityPlayer]
+    backups: [ActivityPlayer]
     maxPlayers: Int
     date: String
     info: String
@@ -134,12 +143,21 @@ input ActivityPlayerInput {
     type: String
 }
 
+input ActivityOptionsInput {
+    canChangeTitle: Boolean
+    canSetMaxPlayers: Boolean
+}
+
 input ActivityInput {
     id: String
+    game: String
     type: String
     activityName: String
     instanceName: String
+    imagePath: String
+    options: ActivityOptionsInput
     players: [ActivityPlayerInput]
+    backups: [ActivityPlayerInput]
     maxPlayers: Int
     date: String
     info: String

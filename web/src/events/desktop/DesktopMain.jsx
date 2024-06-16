@@ -10,13 +10,10 @@ export function DesktopMain({ roster, backupRoster, date, instanceName, maxPlaye
     return (
         <div style={{ paddingLeft: '20px' }}>
             <Stack direction="row" spacing={2} style={{ paddingTop: '50px', width: '100%' }}>
-                <img src={activity.imagePath} alt={activity.name} style={{ width: '32px' }} />
-                <Typography variant="h5">{activity.title}</Typography>
+                <img src={activity.imagePath} alt={activity.activityName} style={{ width: '32px' }} />
+                <Typography variant="h5">{activity.activityName}</Typography>
                 <SelectActivityDialogButton buttonText='Change' onSelect={(act) => { onChangeActivity(act) }} onCancel={() => { }} />
             </Stack>
-            <div style={{ paddingLeft: '0px', paddingTop: '20px', paddingBottom: '10px' }}>
-                <Typography variant="h4">{activity.activityName}</Typography>
-            </div>
             {!activity.active && <h2 style={{ paddingLeft: '20px' }}>This activity is longer active!</h2>}
             <Grid container spacing={4}>
                 <Grid item xs={4}>

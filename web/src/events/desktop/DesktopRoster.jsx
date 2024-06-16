@@ -134,41 +134,11 @@ const DesktopRoster = ({ roster = [], backupRoster = [], excludeList, onRosterCh
                 <Button variant="outlined" disabled={(isEmpty(manualPlayerName) && !selectedDestinyPlayer)} onClick={onAddBackup}>Add Backup</Button>
             </div>
             <Grid sx={{ marginTop: '10px' }} container spacing={2}>
-                <Grid item xs="12" md="6">
+                <Grid item xs={12} md={6}>
                     <PlayerList title={`${Math.max(0, maxPlayers - roster.length)} active slots available`} players={roster} onDelete={onRemovePlayer} />
-                    {/* <div style={{ paddingLeft: '10px' }}>
-                        <strong>{`${Math.max(0, maxPlayers - roster.length)} active slots available`}</strong>
-                    </div>
-                    <List>
-                        {roster.map((player) => (
-                            <ListItem span={4} key={player.name}
-                                secondaryAction={
-                                    <IconButton edge="end" aria-label="delete" onClick={() => onRemovePlayer(player)}>
-                                        <DeleteIcon />
-                                    </IconButton>
-                                }>
-                                <span>{player.name}</span>
-                            </ListItem>
-                        ))}
-                    </List> */}
                 </Grid>
-                <Grid item xs="12" md="6">
+                <Grid item xs={12} md={6}>
                     <PlayerList title="Backups" players={backupRoster} onDelete={onRemoveBackup} />
-                    {/* <div style={{ paddingLeft: '10px' }}>
-                        <strong>Backups</strong>
-                    </div>
-                    <List>
-                        {backupRoster.map((player) => (
-                            <ListItem span={4} key={player.name}
-                                secondaryAction={
-                                    <IconButton edge="end" aria-label="delete" onClick={() => onRemoveBackup(player)}>
-                                        <DeleteIcon />
-                                    </IconButton>
-                                }>
-                                <span>{player.name}</span>
-                            </ListItem>
-                        ))}
-                    </List> */}
                 </Grid>
             </Grid>
         </div>

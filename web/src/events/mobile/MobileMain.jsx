@@ -36,7 +36,6 @@ export function MobileMain({ roster, backupRoster, date, instanceName, maxPlayer
                 <Tab label="Details" />
                 <Tab label="Roster" />
             </Tabs>
-            <div style={{ padding: '5px', paddingTop: '20px', textAlign: 'center' }}><Typography variant="h4">{activity.activityName}</Typography></div>
             {!activity.active && <h2 style={{ padding: '5px' }}>This activity is longer active!</h2>}
             <div style={{ padding: '5px' }}>
                 {activeTab === tabs.details && <MobileDetails activity={activity} date={date} instanceName={instanceName} maxPlayers={maxPlayers} saveEnabled={saveEnabled} onChange={onDetailsChange} onSave={onSave} onArchive={onArchive} onChangeActivity={onChangeActivity} />}

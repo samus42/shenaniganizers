@@ -12,7 +12,7 @@ let client = null
 let db = null
 const postfix = env === 'testing' ? '_it' : ''
 const raidsCollectionName = `raids${postfix}`
-const activitiesCollectionName = `activities_new${postfix}`
+const activitiesCollectionName = `activities${postfix}`
 const emoteConfigsCollectionName = `emotes${postfix}`
 let connecting = false
 

@@ -11,11 +11,6 @@ const MobileDetails = ({ instanceName, date, maxPlayers, saveEnabled, activity, 
         <div>
             <div style={{ textAlign: 'center', paddingTop: '10px', paddingBottom: '10px' }}><Button fullWidth variant="contained" disabled={!saveEnabled} onClick={debouncedSave}>Save Changes</Button></div>
 
-            <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                <img src={activity.imagePath} alt={activity.activityName} style={{ width: '32px' }} />
-                <Typography variant="h5">{activity.activityName}</Typography>
-                <SelectActivityDialogButton buttonText='Change' onSelect={(act) => { onChangeActivity(act) }} onCancel={() => { }} />
-            </div>
             <div style={{ paddingTop: '40px' }}>
                 <TextField fullWidth label="Create a name for this activity!" value={instanceName} onChange={(evt) => onChange({ instanceName: evt.target.value, date, maxPlayers })} />
             </div>
@@ -38,7 +33,7 @@ const MobileDetails = ({ instanceName, date, maxPlayers, saveEnabled, activity, 
                 <div style={{ marginTop: '30px' }}><strong>You must enter a name and date before saving.</strong></div>
             )}
             {activity.id && <div style={{ marginTop: '80px' }}>
-                <Button onClick={onArchive} variant="contained">Archive Activity To Remove From Active List</Button>
+                <Button onClick={onArchive} variant="outlined">Archive Activity To Remove From Active List</Button>
             </div>
             }
         </div>

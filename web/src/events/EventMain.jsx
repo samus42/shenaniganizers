@@ -113,6 +113,13 @@ export function EventMain() {
         }
     }
 
+    const onActivityChange = async (newActivity) => {
+        const updated = { ...newActivity, id: activity?.id, version: activity?.version }
+        setActivity(updated)
+        if (saveEnabled) {
+            await performSave({ ...updated, players: currentRoster, backups: backupRoster, instanceName, date })
+        }
+    }
     const onBackupRosterChange = async (newBackups, saveData = false) => {
         setBackupRoster(newBackups)
         if (saveEnabled) {
@@ -153,10 +160,7 @@ export function EventMain() {
                 maxPlayers={maxPlayers}
                 activity={activity}
                 saveEnabled={saveEnabled}
-                onChangeActivity={(updated) => {
-                    console.log('new: ', updated)
-                    setActivity({ ...updated, id: activity?.id, version: activity?.version })
-                }}
+                onChangeActivity={onActivityChange}
                 onSave={onSave}
                 onArchive={onArchive}
                 onDetailsChange={onDetailsChange}

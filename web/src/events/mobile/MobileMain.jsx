@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import MobileRoster from '../desktop/DesktopRoster'
 import MobileDetails from './MobileDetails'
-import { Tabs, Tab, Typography } from '@mui/material'
+import { Tabs, Tab, Typography, Divider } from '@mui/material'
+import { SelectActivityDialogButton } from '../SelectActivity'
 
 const tabs = {
     details: 0,
@@ -27,7 +28,15 @@ export function MobileMain({ roster, backupRoster, date, instanceName, maxPlayer
         onBackupRosterChange(newBackups, true)
     }
     return (
-        <div>
+        <div style={{ paddingRight: '5px', paddingLeft: '5px' }}>
+            <div style={{ paddingTop: '20px', paddingBottom: '20px', display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                <div style={{ display: 'flex' }}>
+                    <img src={activity.imagePath} alt={activity.activityName} style={{ marginRight: '10px', width: '32px' }} />
+                    <Typography variant="h5">{activity.activityName}</Typography>
+                </div>
+                <SelectActivityDialogButton buttonText='Change' onSelect={(act) => { onChangeActivity(act) }} onCancel={() => { }} />
+            </div>
+            <Divider />
             <Tabs indicatorColor="secondary"
                 textColor="inherit"
                 variant="fullWidth"

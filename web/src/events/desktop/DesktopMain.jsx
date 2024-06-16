@@ -9,7 +9,7 @@ export function DesktopMain({ roster, backupRoster, date, instanceName, maxPlaye
     const debouncedSave = useMemo(() => debounce(onSave, 300), [onSave])
     return (
         <div style={{ paddingLeft: '20px' }}>
-            <Stack direction="row" spacing={2} style={{ paddingTop: '50px', width: '100%' }}>
+            <Stack direction="row" spacing={2} style={{ paddingTop: '20px', paddingBottom: '20px', width: '100%' }}>
                 <img src={activity.imagePath} alt={activity.activityName} style={{ width: '32px' }} />
                 <Typography variant="h5">{activity.activityName}</Typography>
                 <SelectActivityDialogButton buttonText='Change' onSelect={(act) => { onChangeActivity(act) }} onCancel={() => { }} />
@@ -42,7 +42,7 @@ export function DesktopMain({ roster, backupRoster, date, instanceName, maxPlaye
                         <Button fullWidth variant="contained" disabled={!saveEnabled} onClick={debouncedSave}>Save Changes</Button>
                     </div>
                     {activity.id && <div style={{ marginTop: '50px' }}>
-                        <Button onClick={onArchive} variant="contained">Archive Activity To Remove From Active List</Button>
+                        <Button onClick={onArchive} variant="outlined">Archive Activity To Remove From Active List</Button>
                     </div>
                     }
                 </Grid>

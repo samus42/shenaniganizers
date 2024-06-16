@@ -7,6 +7,7 @@ import { Snackbar, IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import ErrorDialog from '../ErrorDialog'
 import isEmpty from 'lodash.isempty'
+import _ from 'lodash'
 import { SelectActivity } from './SelectActivity'
 
 export function EventMain() {
@@ -66,13 +67,6 @@ export function EventMain() {
         }
     }, [activityKey, reloadFlag])
 
-    useEffect(() => {
-        if (activity) {
-            setMaxPlayers(activity.maxPlayers)
-            // TODO: if current roster is now larger than max players, move to backup
-        }
-    }, [activity])
-
     const onDetailsChange = (details) => {
         setInstanceName(details.instanceName)
         setDate(details.date)
@@ -115,9 +109,21 @@ export function EventMain() {
 
     const onActivityChange = async (newActivity) => {
         const updated = { ...newActivity, id: activity?.id, version: activity?.version }
+        let newBackups = backupRoster
+        let newCurrent = currentRoster
+        if (currentRoster.length > updated.maxPlayers) {
+            const addToBackup = _.takeRight(currentRoster, currentRoster.length - updated.maxPlayers)
+            console.log('addToBackup: ', addToBackup)
+            newBackups = backupRoster.concat(addToBackup)
+            console.log('newBackups: ', newBackups)
+            newCurrent = _.take(currentRoster, updated.maxPlayers)
+            setCurrentRoster(newCurrent)
+            setBackupRoster(newBackups)
+        }
         setActivity(updated)
+        setMaxPlayers(updated.maxPlayers)
         if (saveEnabled) {
-            await performSave({ ...updated, players: currentRoster, backups: backupRoster, instanceName, date })
+            await performSave({ ...updated, players: newCurrent, backups: newBackups, instanceName, date })
         }
     }
     const onBackupRosterChange = async (newBackups, saveData = false) => {

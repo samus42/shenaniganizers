@@ -1,29 +1,15 @@
 const moment = require('moment-timezone')
 const agent = require('superagent')
 
-const thumbnailBase = 'https://shenaniganizers.com/activities'
+const thumbnailBase = 'https://shenaniganizers.com'
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL
-const raidBase = 'https://shenaniganizers.com/raid'
-
-const Thumbnails = {
-    'Deep Stone Crypt': 'deepstonecrypt.png',
-    'Root of Nightmares': 'nightmares.png',
-    'Taken King': 'takenking.png',
-    'Vow Of The Disciple': 'disciple.png',
-    'Vault Of Glass': 'vaultofglass.png',
-    'Garden Of Salvation': 'garden.png',
-    'Last Wish': 'lastwish.png',
-    'Among Us': 'amongus.png',
-    'Custom': 'custom.png',
-    "Crota's End": 'crota.png',
-    'Wrath Of The Machine': 'wrathofthemachine.png'
-}
+const raidBase = 'https://shenaniganizers.com/event'
 
 async function sendEventMessage(title, event, eventFieldName) {
     const date = moment(event.date)
     const dateFormat = 'h:mma zz'
     const eventName = event[eventFieldName]
-    const thumbnailImage = Thumbnails[eventName] || 'chaos-aqua.png'
+    const thumbnailImage = event.imagePath
     const message = {
         "embeds": [
             {

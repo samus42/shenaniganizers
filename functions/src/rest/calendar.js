@@ -25,7 +25,7 @@ const activityToEvent = (activity) => {
         summary: activity.type === 'custom' ? activity.instanceName : activity.activityName,
         description: activity.instanceName,
         location: 'Online',
-        url: `https://shenaniganizers.com/activity/${activity.id}`
+        url: `https://shenaniganizers.com/event/${activity.id}`
     }
 }
 const raidCalendarHandler = async (req, res) => {

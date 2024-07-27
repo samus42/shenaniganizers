@@ -2,6 +2,8 @@ export const Elements = {
     Solar: 'Solar',
     Arc: 'Arc',
     Void: 'Void',
+    Strand: 'Strand',
+    Stasis: 'Stasis',
     Unkonwn: 'Unknown'
 }
 
@@ -19,5 +21,6 @@ export const Areas = {
     Nessus: 'Nessus',
     EDZ: 'EDZ',
     Europa: 'Europa',
-    Neptune: 'Neptune'
+    Neptune: 'Neptune',
+    PaleHeart: 'Pale Heart'
 }

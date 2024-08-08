@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import { useNavigate, useLocation } from "react-router-dom"
-import { getUserAuthInfo, getMembershipById } from '../api/destiny'
-import { setMembershipInfo, setAuthInfo } from './currentUser'
+import {useEffect} from 'react'
+import {useNavigate, useLocation} from 'react-router-dom'
+import {getUserAuthInfo, getMembershipById} from '../api/destiny'
+import {setMembershipInfo, setAuthInfo} from './currentUser'
 
 function useQuery() {
-    return new URLSearchParams(useLocation().search);
+    return new URLSearchParams(useLocation().search)
 }
 
 const ProcessLogin = () => {

@@ -9,15 +9,15 @@ import VowOfTheDisciple from './VowOfTheDisciple'
 import Nightmare from './Nightmare'
 
 const raidMap = {
-    'garden': GardenOfSalvation,
-    'crypt': DeepStoneCrypt,
-    'wish': LastWish,
-    'crota': Crota,
-    'ttk': TakenKing,
-    'wrath': WrathOfTheMachine,
-    'vault': VaultOfGlass,
-    'disciple': VowOfTheDisciple,
-    'nightmare': Nightmare
+    garden: GardenOfSalvation,
+    crypt: DeepStoneCrypt,
+    wish: LastWish,
+    crota: Crota,
+    ttk: TakenKing,
+    wrath: WrathOfTheMachine,
+    vault: VaultOfGlass,
+    disciple: VowOfTheDisciple,
+    nightmare: Nightmare
 }
 
 export const newRaidByKey = (key) => {

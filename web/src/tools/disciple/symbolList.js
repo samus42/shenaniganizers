@@ -25,7 +25,7 @@ export const symbolFileNames = [
     'traveler-alpha.png',
     'witness-alpha.png',
     'worm-alpha.png',
-    'worship-alpha.png',
+    'worship-alpha.png'
 ]
 
 const obeliskOnly = [
@@ -41,7 +41,7 @@ const obeliskOnly = [
     'scorn-alpha.png',
     'tower-alpha.png',
     'witness-alpha.png',
-    'worm-alpha.png',
+    'worm-alpha.png'
 ]
 
 const roomsOnly = [
@@ -53,7 +53,7 @@ const roomsOnly = [
     'kill-alpha.png',
     'knowledge-alpha.png',
     'stop-alpha.png',
-    'worship-alpha.png',
+    'worship-alpha.png'
 ]
 
 const puzzleOnly = [
@@ -65,14 +65,14 @@ const puzzleOnly = [
     'light-alpha.png',
     'stop-alpha.png',
     'guardian-alpha.png',
-    'kill-alpha.png',
+    'kill-alpha.png'
 ]
 
 export const SymbolFilters = {
     All: 'all',
     Obelisk: 'obelisk',
     Rooms: 'rooms',
-    Puzzle: 'puzzle',
+    Puzzle: 'puzzle'
 }
 
 export const getFilteredSymbols = (filter) => {
@@ -87,4 +87,3 @@ export const getFilteredSymbols = (filter) => {
     }
     return symbolFileNames
 }
-

@@ -1,18 +1,26 @@
-import React, { useState, useLayoutEffect } from 'react'
-import { Typography, Grid, IconButton, Select, MenuItem, FormControl, InputLabel } from '@mui/material'
+import {useState, useLayoutEffect} from 'react'
+import {
+    Typography,
+    Grid,
+    IconButton,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel
+} from '@mui/material'
 import DeleteIcon from '@mui/icons-material/PersonRemove'
 import DraggablePlayer from './DraggablePlayer'
-import { useDrop } from 'react-dnd'
+import {useDrop} from 'react-dnd'
 
-const Role = ({ role, onChange = () => { } }) => {
-    const [{ isOver }, drop] = useDrop({
+const Role = ({role, onChange = () => {}}) => {
+    const [{isOver}, drop] = useDrop({
         accept: 'player',
         drop: (item) => onChange(role, item.player),
-        canDrop: (item) => (!role.player || item.player.destinyId !== role.player.destinyId),
-        collect: monitor => ({
+        canDrop: (item) => !role.player || item.player.destinyId !== role.player.destinyId,
+        collect: (monitor) => ({
             isOver: !!monitor.isOver(),
-            canDrop: !!monitor.canDrop(),
-        }),
+            canDrop: !!monitor.canDrop()
+        })
     })
 
     let modifiers = 'player-drop-target-unassigned'
@@ -23,9 +31,23 @@ const Role = ({ role, onChange = () => { } }) => {
     }
 
     return (
-        <div ref={drop} style={{ display: 'flex', padding: '3px', alignItems: 'center' }} className={modifiers}>
-            <div style={{ minWidth: '240px' }}><Typography variant="h6">{role.name}</Typography></div>
-            <div style={{ paddingTop: '0px', display: 'flex', justifyContent: 'space-between', minWidth: '200px', alignItems: 'center' }}>
+        <div
+            ref={drop}
+            style={{display: 'flex', padding: '3px', alignItems: 'center'}}
+            className={modifiers}
+        >
+            <div style={{minWidth: '240px'}}>
+                <Typography variant="h6">{role.name}</Typography>
+            </div>
+            <div
+                style={{
+                    paddingTop: '0px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    minWidth: '200px',
+                    alignItems: 'center'
+                }}
+            >
                 <DraggablePlayer player={role.player} />
                 {role.player && (
                     <IconButton aria-label="delete" onClick={() => onChange(role, null)}>
@@ -37,10 +59,10 @@ const Role = ({ role, onChange = () => { } }) => {
     )
 }
 
-const Stage = ({ stage, onChange = () => { }, onStrategyChange }) => {
+const Stage = ({stage, onChange = () => {}, onStrategyChange}) => {
     const roles = stage.roles || stage.strategies[0].roles
     return (
-        <div style={{ marginTop: '20px' }} className="raid-stage">
+        <div style={{marginTop: '20px'}} className="raid-stage">
             <div>
                 <Typography variant="h4">{stage.title}</Typography>
                 <div>
@@ -53,52 +75,67 @@ const Stage = ({ stage, onChange = () => { }, onStrategyChange }) => {
                                 labelId="select-label"
                                 label="Strategy"
                                 onChange={(evt) => {
-                                    onStrategyChange(stage, stage.strategies.find((s) => s.title === evt.target.value))
+                                    onStrategyChange(
+                                        stage,
+                                        stage.strategies.find((s) => s.title === evt.target.value)
+                                    )
                                 }}
-                                fullWidth>
-                                {
-                                    stage.strategies.map((strat) => (
-                                        <MenuItem key={strat.title} value={strat.title}>{strat.title}</MenuItem>
-                                    ))
-                                }
+                                fullWidth
+                            >
+                                {stage.strategies.map((strat) => (
+                                    <MenuItem key={strat.title} value={strat.title}>
+                                        {strat.title}
+                                    </MenuItem>
+                                ))}
                             </Select>
                         </FormControl>
                     )}
                 </div>
                 <div>
-                    {roles.map((role) => <Role key={`role-${role.name}`} role={role} onChange={(role, player) => onChange(stage, role, player)} />)}
+                    {roles.map((role) => (
+                        <Role
+                            key={`role-${role.name}`}
+                            role={role}
+                            onChange={(role, player) => onChange(stage, role, player)}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
     )
 }
 
-const RaidAssignments = ({ raid, onChange, onStrategyChange }) => {
+const RaidAssignments = ({raid, onChange, onStrategyChange}) => {
     const [cellSpan, setCellSpan] = useState(6)
     useLayoutEffect(() => {
         const updateSize = () => {
             if (window.innerWidth < 1500) {
                 setCellSpan(7)
-            }
-            else {
+            } else {
                 setCellSpan(6)
             }
         }
-        window.addEventListener('resize', updateSize);
-        updateSize();
-        return () => window.removeEventListener('resize', updateSize);
+        window.addEventListener('resize', updateSize)
+        updateSize()
+        return () => window.removeEventListener('resize', updateSize)
     }, [])
 
     return (
         <div>
             <Grid container spacing={3}>
-                {raid.stages.map((stage, index) =>
-                    <Grid item key={`${stage}-${index}`} span={cellSpan} style={{ width: '500px' }}>
-                        <Stage key={`${stage}-${index}`} stage={stage} onChange={onChange} onStrategyChange={onStrategyChange} />
-                    </Grid>)}
+                {raid.stages.map((stage, index) => (
+                    <Grid item key={`${stage}-${index}`} span={cellSpan} style={{width: '500px'}}>
+                        <Stage
+                            key={`${stage}-${index}`}
+                            stage={stage}
+                            onChange={onChange}
+                            onStrategyChange={onStrategyChange}
+                        />
+                    </Grid>
+                ))}
             </Grid>
-        </div>)
+        </div>
+    )
 }
-
 
 export default RaidAssignments

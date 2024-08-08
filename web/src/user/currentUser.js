@@ -41,7 +41,7 @@ export const clearMembershipInfo = () => {
 export const getCurrentUserInfo = () => {
     const membershipInfo = getMembershipInfo()
     if (membershipInfo) {
-        const { bungieNetUser, destinyMemberships } = membershipInfo
+        const {bungieNetUser, destinyMemberships} = membershipInfo
         if (bungieNetUser && destinyMemberships && destinyMemberships.length > 0) {
             return {
                 iconPath: `${imageUrlPrefix}${bungieNetUser.profilePicturePath}`,

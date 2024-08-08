@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
-import { Timeline, TimelineItem, TimelineSeparator, TimelineOppositeContent, TimelineDot, TimelineConnector, TimelineContent } from '@mui/lab'
-import { Link, Avatar, Typography, Popover, Card, CardContent, List, ListItem } from '@mui/material'
+import {useState} from 'react'
+import {
+    Timeline,
+    TimelineItem,
+    TimelineSeparator,
+    TimelineOppositeContent,
+    TimelineDot,
+    TimelineConnector,
+    TimelineContent
+} from '@mui/lab'
+import {Link, Avatar, Typography, Popover, Card, CardContent, List, ListItem} from '@mui/material'
 
 const ace = 'Aaron Corcoran'
 const samus = 'Scott MacDonald'
 const tansy = 'Tracy Smith-Van Pelt'
 const samusIcon = 'https://www.bungie.net/img/profile/avatars/e2015_14.jpg'
 const aceIcon = 'https://www.bungie.net//img/profile/avatars/avatar23.jpg'
-const tansyIcon = 'https://image.api.np.km.playstation.net/images/?format=png&w=160&h=160&image=https%3A%2F%2Fkfscdn.api.np.km.playstation.net%2F5387964934898443052%2F1541722837287.png&sign=1cc7d0286c4fc59c83ec1f0c6a37f2d414df1daa'
+const tansyIcon =
+    'https://image.api.np.km.playstation.net/images/?format=png&w=160&h=160&image=https%3A%2F%2Fkfscdn.api.np.km.playstation.net%2F5387964934898443052%2F1541722837287.png&sign=1cc7d0286c4fc59c83ec1f0c6a37f2d414df1daa'
 
 const dolArnach = {
     author: ace,
@@ -67,9 +76,9 @@ const redjackThief = {
 const sinsOfTheKeepers = {
     author: ace,
     icon: aceIcon,
-    title: "Sins of the Keepers",
+    title: 'Sins of the Keepers',
     subtext: 'Just Released!',
-    pdf: "https://drive.google.com/file/d/1EDM8uXQJZwobyVhlv5lMJ5aLFhtizPfS/view?usp=drive_link"
+    pdf: 'https://drive.google.com/file/d/1EDM8uXQJZwobyVhlv5lMJ5aLFhtizPfS/view?usp=drive_link'
 }
 const worstHunter = {
     author: tansy,
@@ -84,33 +93,35 @@ const defectiveTitan = {
     subtext: 'Just Released!',
     pdf: 'https://drive.google.com/file/d/1yWN5b4Rn5ztTiNF6CotOfVa8rAuiBpF_/view?usp=sharing'
 }
-function BookItem({ book, onClick }) {
+function BookItem({book, onClick}) {
     return (
         <TimelineItem>
             <TimelineOppositeContent>
                 <small>{book.subtext || ''}</small>
             </TimelineOppositeContent>
             <TimelineSeparator>
-                <TimelineDot sx={{ padding: 0 }}>
-                    <Avatar src={book.icon} sx={{ width: 36, height: 36 }} />
+                <TimelineDot sx={{padding: 0}}>
+                    <Avatar src={book.icon} sx={{width: 36, height: 36}} />
                 </TimelineDot>
                 <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
                 {book.pdf ? (
-                    <Typography variant="h6"><Link className='book-link' onClick={(evt) => onClick(evt, book)}>{book.title}</Link></Typography>
-                ) :
-                    (
-                        <Typography variant="h6">{book.title}</Typography>
-                    )
-                }
+                    <Typography variant="h6">
+                        <Link className="book-link" onClick={(evt) => onClick(evt, book)}>
+                            {book.title}
+                        </Link>
+                    </Typography>
+                ) : (
+                    <Typography variant="h6">{book.title}</Typography>
+                )}
                 <Typography>{book.author}</Typography>
             </TimelineContent>
         </TimelineItem>
     )
 }
 
-function EventItem({ event, subtext }) {
+function EventItem({event, subtext}) {
     return (
         <TimelineItem>
             <TimelineOppositeContent>
@@ -121,14 +132,12 @@ function EventItem({ event, subtext }) {
                 <TimelineDot />
                 <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent>
-                {/* <Typography variant="h6">Event</Typography> */}
-            </TimelineContent>
+            <TimelineContent>{/* <Typography variant="h6">Event</Typography> */}</TimelineContent>
         </TimelineItem>
     )
 }
 
-function BookDetails({ book }) {
+function BookDetails({book}) {
     if (!book) {
         return null
     }
@@ -138,8 +147,18 @@ function BookDetails({ book }) {
                 <Typography variant="h4">{book.title}</Typography>
                 <Typography variant="h6">Download Options</Typography>
                 <List>
-                    <ListItem><a href={book.pdf} target="_blank" rel="noreferrer">PDF</a></ListItem>
-                    {book.epub && <ListItem><a href={book.epub} target="_blank" rel="noreferrer">ePub (for all eReaders, including Kindle)</a></ListItem>}
+                    <ListItem>
+                        <a href={book.pdf} target="_blank" rel="noreferrer">
+                            PDF
+                        </a>
+                    </ListItem>
+                    {book.epub && (
+                        <ListItem>
+                            <a href={book.epub} target="_blank" rel="noreferrer">
+                                ePub (for all eReaders, including Kindle)
+                            </a>
+                        </ListItem>
+                    )}
                 </List>
                 <Typography variant="h6">If you want a print copy, just ask!</Typography>
             </CardContent>
@@ -159,8 +178,15 @@ export default function Books() {
     }
     return (
         <div>
-            <Typography variant="h6">Our clan members have written a few Destiny novels using a shared universe. Give them a try! See the timeline below for reading order. Click on a book link to get download options.</Typography>
-            <Typography variant="h6">If you'd like to get in touch with our authors, drop us an email at <a href="mailto:books@shenaniganizers.com">books@shenaniganizers.com</a></Typography>
+            <Typography variant="h6">
+                Our clan members have written a few Destiny novels using a shared universe. Give
+                them a try! See the timeline below for reading order. Click on a book link to get
+                download options.
+            </Typography>
+            <Typography variant="h6">
+                {`If you'd like to get in touch with our authors, drop us an email at `}
+                <a href="mailto:books@shenaniganizers.com">books@shenaniganizers.com</a>
+            </Typography>
             <Timeline>
                 <EventItem event={`Crota's End`} />
                 <EventItem event={`Fall of Oryx`} />
@@ -185,11 +211,11 @@ export default function Books() {
                 onClose={handlePopoverClose}
                 anchorOrigin={{
                     vertical: 'top',
-                    horizontal: 'right',
+                    horizontal: 'right'
                 }}
                 transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'left',
+                    horizontal: 'left'
                 }}
             >
                 <BookDetails book={selected} />

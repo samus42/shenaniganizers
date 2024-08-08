@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Grid } from '@mui/material'
+import {useState} from 'react'
+import {Grid} from '@mui/material'
 import ActiveList from './ActiveList'
 import DisplayRotation from '../rotations/DisplayRotation'
 import ChooseActivity from './ChooseActivity'
-import { HelpfulToolsContainer } from '../tools/HelpfulToolsContainer'
+import {HelpfulToolsContainer} from '../tools/HelpfulToolsContainer'
 
 const Activities = () => {
     const [showChooseActivity, setShowChooseActivity] = useState(false)
@@ -28,7 +28,7 @@ const Activities = () => {
                     <HelpfulToolsContainer />
                 </Grid>
             </Grid>
-        </div >
+        </div>
     )
 }
 

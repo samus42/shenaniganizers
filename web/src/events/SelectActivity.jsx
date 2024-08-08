@@ -1,14 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import { getActivities, getGames } from './activityTemplates'
-import { Card, CardActionArea, CardMedia, Grid, Typography, CardContent, Button, Dialog, DialogContent, Select, FormControl, InputLabel, MenuItem, Divider } from '@mui/material'
+import {useState, useEffect} from 'react'
+import {getActivities, getGames} from './activityTemplates'
+import {
+    Card,
+    CardActionArea,
+    CardMedia,
+    Grid,
+    Typography,
+    CardContent,
+    Button,
+    Dialog,
+    DialogContent,
+    Select,
+    FormControl,
+    InputLabel,
+    MenuItem
+} from '@mui/material'
 import _ from 'lodash'
 
-function ActivityCard({ activity, onClick }) {
+function ActivityCard({activity, onClick}) {
     return (
         <Card>
-            <CardActionArea sx={{ display: 'flex', justifyContent: 'flex-start' }} onClick={() => onClick(activity)}>
-                <CardMedia sx={{ width: '80px' }} component="img" image={activity.imagePath}></CardMedia>
-                <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
+            <CardActionArea
+                sx={{display: 'flex', justifyContent: 'flex-start'}}
+                onClick={() => onClick(activity)}
+            >
+                <CardMedia
+                    sx={{width: '80px'}}
+                    component="img"
+                    image={activity.imagePath}
+                ></CardMedia>
+                <CardContent sx={{display: 'flex', flexDirection: 'column'}}>
                     <Typography variant="h5">{activity.activityName}</Typography>
                     <Typography variant="subtitle1">{`${activity.game} - ${activity.type}`}</Typography>
                 </CardContent>
@@ -17,7 +38,7 @@ function ActivityCard({ activity, onClick }) {
     )
 }
 
-export function SelectActivity({ onSelect, onCancel }) {
+export function SelectActivity({onSelect, onCancel}) {
     const [activities, setActivities] = useState([])
     const [filteredActivities, setFilteredActivities] = useState([])
     const [gameFilter, setGameFilter] = useState('All')
@@ -30,10 +51,10 @@ export function SelectActivity({ onSelect, onCancel }) {
     useEffect(() => {
         let newList = activities
         if (gameFilter !== 'All') {
-            newList = activities.filter(({ game }) => game === gameFilter)
+            newList = activities.filter(({game}) => game === gameFilter)
 
             if (typeFilter !== 'All') {
-                newList = newList.filter(({ type }) => type === typeFilter)
+                newList = newList.filter(({type}) => type === typeFilter)
             }
         }
         setFilteredActivities(_.sortBy(newList, 'title'))
@@ -49,27 +70,43 @@ export function SelectActivity({ onSelect, onCancel }) {
     return (
         <div>
             <div>
-                <Button fullWidth variant="contained" onClick={onCancel}>Go Back</Button>
+                <Button fullWidth variant="contained" onClick={onCancel}>
+                    Go Back
+                </Button>
             </div>
-            <div style={{ marginTop: '10px', marginBottom: '10px', display: 'flex' }}>
+            <div style={{marginTop: '10px', marginBottom: '10px', display: 'flex'}}>
                 <FormControl fullWidth>
                     <InputLabel id="game-select-label">Game</InputLabel>
-                    <Select labelId="game-select-label" label="Game" value={gameFilter} onChange={(evt) => onChangeGameFilter(evt.target.value)}>
+                    <Select
+                        labelId="game-select-label"
+                        label="Game"
+                        value={gameFilter}
+                        onChange={(evt) => onChangeGameFilter(evt.target.value)}
+                    >
                         <MenuItem value="All">All</MenuItem>
                         {getGames().map((game) => (
-                            <MenuItem key={game} value={game}>{game}</MenuItem>
+                            <MenuItem key={game} value={game}>
+                                {game}
+                            </MenuItem>
                         ))}
                     </Select>
                 </FormControl>
             </div>
             {gameFilter !== 'All' && (
-                <div style={{ marginTop: '10px', marginBottom: '10px', display: 'flex' }}>
+                <div style={{marginTop: '10px', marginBottom: '10px', display: 'flex'}}>
                     <FormControl fullWidth>
                         <InputLabel id="game-select-label">Types</InputLabel>
-                        <Select labelId="game-select-label" label="Types" value={typeFilter} onChange={(evt) => setTypeFilter(evt.target.value)}>
+                        <Select
+                            labelId="game-select-label"
+                            label="Types"
+                            value={typeFilter}
+                            onChange={(evt) => setTypeFilter(evt.target.value)}
+                        >
                             <MenuItem value="All">All</MenuItem>
                             {getGameTypes().map((type) => (
-                                <MenuItem key={type} value={type}>{type}</MenuItem>
+                                <MenuItem key={type} value={type}>
+                                    {type}
+                                </MenuItem>
                             ))}
                         </Select>
                     </FormControl>
@@ -86,11 +123,18 @@ export function SelectActivity({ onSelect, onCancel }) {
     )
 }
 
-export function SelectActivityDialogButton({ onSelect, onCancel, buttonText = "Select Activity", buttonVariant = "outlined" }) {
+export function SelectActivityDialogButton({
+    onSelect,
+    onCancel,
+    buttonText = 'Select Activity',
+    buttonVariant = 'outlined'
+}) {
     const [open, setOpen] = useState(false)
     return (
         <>
-            <Button variant={buttonVariant} onClick={() => setOpen(true)}>{buttonText}</Button>
+            <Button variant={buttonVariant} onClick={() => setOpen(true)}>
+                {buttonText}
+            </Button>
             <Dialog open={open} onClose={() => setOpen(false)} fullScreen>
                 <DialogContent>
                     <SelectActivity

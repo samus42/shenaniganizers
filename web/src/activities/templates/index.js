@@ -3,7 +3,7 @@ const AmongUs = () => ({
     activityName: 'Among Us',
     players: [],
     maxPlayers: 10,
-    info: '',
+    info: ''
 })
 
 const Custom = () => ({
@@ -15,9 +15,8 @@ const Custom = () => ({
 })
 const activityMap = {
     amongus: AmongUs,
-    custom: Custom,
+    custom: Custom
 }
-
 
 export const newActivityByKey = (key) => {
     if (!activityMap[key]) {

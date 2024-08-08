@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { ListEmoteConfigs } from './ListEmoteConfigs'
-import { EmoteActions } from './EmoteActions'
-import { useParams, useNavigate } from 'react-router-dom'
-import { getCurrentUserInfo } from '../../user/currentUser'
+import {useEffect, useState} from 'react'
+import {ListEmoteConfigs} from './ListEmoteConfigs'
+import {EmoteActions} from './EmoteActions'
+import {useParams, useNavigate} from 'react-router-dom'
+import {getCurrentUserInfo} from '../../user/currentUser'
 import raidClient from '../../api/raidClient'
-import { gql } from '@apollo/client'
-import { IconButton, Snackbar } from '@mui/material'
+import {gql} from '@apollo/client'
+import {IconButton, Snackbar} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 
 export function ManageEmoteConfigs() {
@@ -18,10 +18,14 @@ export function ManageEmoteConfigs() {
     }, [])
 
     const onSave = async (config) => {
-        const mutation = gql`mutation ($config: EmoteConfigInput!) {
-            config: saveEmoteConfig(emoteConfig: $config) {id}
-        }`
-        const { data } = await raidClient.mutate({ mutation, variables: { config } })
+        const mutation = gql`
+            mutation ($config: EmoteConfigInput!) {
+                config: saveEmoteConfig(emoteConfig: $config) {
+                    id
+                }
+            }
+        `
+        const {data} = await raidClient.mutate({mutation, variables: {config}})
         setSaveMessage('Config data saved!')
         onConfigSelect(data.config.id)
     }
@@ -31,7 +35,16 @@ export function ManageEmoteConfigs() {
     }
     return (
         <>
-            {params.configId ? <EmoteActions currentUser={currentUser} configId={params.configId} onSave={onSave} onCancel={() => navigate('/tools/emotes')} /> : <ListEmoteConfigs currentUser={currentUser} onSelect={onConfigSelect} />}
+            {params.configId ? (
+                <EmoteActions
+                    currentUser={currentUser}
+                    configId={params.configId}
+                    onSave={onSave}
+                    onCancel={() => navigate('/tools/emotes')}
+                />
+            ) : (
+                <ListEmoteConfigs currentUser={currentUser} onSelect={onConfigSelect} />
+            )}
 
             <Snackbar
                 anchorOrigin={{
@@ -39,7 +52,7 @@ export function ManageEmoteConfigs() {
                     horizontal: 'center'
                 }}
                 open={!!saveMessage}
-                onClose={evt => setSaveMessage(null)}
+                onClose={() => setSaveMessage(null)}
                 message={saveMessage}
                 autoHideDuration={6000}
                 action={
@@ -47,7 +60,7 @@ export function ManageEmoteConfigs() {
                         size="small"
                         aria-label="close"
                         color="inherit"
-                        onClick={evt => setSaveMessage(null)}
+                        onClick={() => setSaveMessage(null)}
                     >
                         <CloseIcon fontSize="small" />
                     </IconButton>

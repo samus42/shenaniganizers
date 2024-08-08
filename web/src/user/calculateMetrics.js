@@ -4,8 +4,8 @@ const calculateMetrics = (destinyId, raids) => {
     const raidMap = _.groupBy(raids, 'raidName')
 
     const determineRaidMetrics = (raidSet) => {
-        const allRoles = _.flatten(raidSet.map(({ stages }) => _.flatMap(stages, 'roles')))
-        const playerRoles = allRoles.filter(({ player }) => player && player.destinyId === destinyId)
+        const allRoles = _.flatten(raidSet.map(({stages}) => _.flatMap(stages, 'roles')))
+        const playerRoles = allRoles.filter(({player}) => player && player.destinyId === destinyId)
         const groups = _.groupBy(playerRoles, 'type')
         return _.mapValues(groups, (arr) => arr.length)
     }
@@ -14,7 +14,7 @@ const calculateMetrics = (destinyId, raids) => {
         return {
             raidName: key,
             numRuns: raidSet.length,
-            roleTypes: determineRaidMetrics(raidSet),
+            roleTypes: determineRaidMetrics(raidSet)
         }
     })
 }

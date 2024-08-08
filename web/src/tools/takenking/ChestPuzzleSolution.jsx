@@ -1,5 +1,4 @@
-import React from 'react'
-import { Button } from '@mui/material'
+import {Button} from '@mui/material'
 
 const symbol1 = {
     symbol: '1.png',
@@ -22,7 +21,8 @@ const symbol3 = {
 const symbol4 = {
     symbol: '4.png',
     roomNumber: 4,
-    details: 'Warpriest Encounter. On the top right ledge (closest to the door you walk in from) on a wall.'
+    details:
+        'Warpriest Encounter. On the top right ledge (closest to the door you walk in from) on a wall.'
 }
 
 const symbol5 = {
@@ -34,7 +34,8 @@ const symbol5 = {
 const symbol6 = {
     symbol: '6.png',
     roomNumber: 6,
-    details: 'Under the bottom left ledge in the golgoroth room (closest to the door you come in from. Think where people used to 1-orb cheese).'
+    details:
+        'Under the bottom left ledge in the golgoroth room (closest to the door you come in from. Think where people used to 1-orb cheese).'
 }
 
 const symbol7 = {
@@ -66,36 +67,37 @@ const orderedInstructions = [
     symbol8,
     symbol9
 ]
-const PuzzleStep = ({ instructions }) => {
+const PuzzleStep = ({instructions}) => {
     return (
-        <div style={{ display: 'flex', paddingTop: '10px', paddingBottom: '10px' }}>
-            <div style={{ paddingRight: '10px' }}>
+        <div style={{display: 'flex', paddingTop: '10px', paddingBottom: '10px'}}>
+            <div style={{paddingRight: '10px'}}>
                 <img src={`/takenking/${instructions.symbol}`} alt={instructions} />
             </div>
             <div>
-                <div><strong>{`Room ${instructions.roomNumber}`}</strong></div>
                 <div>
-                    {instructions.details}
+                    <strong>{`Room ${instructions.roomNumber}`}</strong>
                 </div>
+                <div>{instructions.details}</div>
             </div>
         </div>
     )
 }
-const PuzzleSolution = ({ selected, onReset }) => {
-    const displayed = orderedInstructions.filter(({ symbol }) => selected.includes(symbol))
+const PuzzleSolution = ({selected, onReset}) => {
+    const displayed = orderedInstructions.filter(({symbol}) => selected.includes(symbol))
     return (
         <div>
             <div>
-                {
-                    displayed.map((instructions) => (<PuzzleStep key={instructions.symbol} instructions={instructions} />))
-                }
+                {displayed.map((instructions) => (
+                    <PuzzleStep key={instructions.symbol} instructions={instructions} />
+                ))}
             </div>
-            <div style={{ textAlign: 'center' }}>
-                <Button variant="contained" onClick={onReset}>Reset</Button>
+            <div style={{textAlign: 'center'}}>
+                <Button variant="contained" onClick={onReset}>
+                    Reset
+                </Button>
             </div>
         </div>
     )
-
 }
 
 export default PuzzleSolution

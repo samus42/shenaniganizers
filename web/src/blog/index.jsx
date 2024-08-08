@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 import ReactMarkdown from 'react-markdown'
 
-const grabFileData = async (filePath) => {
-    const fileInfo = ''//await import(`${filePath}`)
+const grabFileData = async () => {
+    const fileInfo = '' // await import(`${filePath}`)
     const res = await fetch(fileInfo.default)
     const text = await res.text()
     return text

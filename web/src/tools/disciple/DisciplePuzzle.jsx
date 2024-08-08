@@ -1,6 +1,6 @@
-import { useState, useLayoutEffect } from 'react'
-import { Button, Typography } from "@mui/material"
-import { getFilteredSymbols, SymbolFilters } from './symbolList'
+import {useState, useLayoutEffect} from 'react'
+import {Button, Typography} from '@mui/material'
+import {getFilteredSymbols, SymbolFilters} from './symbolList'
 import SymbolGrid from '../SymbolGrid'
 import PuzzleSolution from './PuzzleSolution'
 
@@ -9,7 +9,7 @@ const Panels = {
     DisplaySolution: 'displaySolution'
 }
 
-const SelectSymbols = ({ onSubmit }) => {
+const SelectSymbols = ({onSubmit}) => {
     const [selected, setSelected] = useState([])
     const [symbolColumns, setSymbolColumns] = useState(7)
 
@@ -24,17 +24,29 @@ const SelectSymbols = ({ onSubmit }) => {
             }
             setSymbolColumns(cols)
         }
-        window.addEventListener('resize', updateSize);
-        updateSize();
-        return () => window.removeEventListener('resize', updateSize);
+        window.addEventListener('resize', updateSize)
+        updateSize()
+        return () => window.removeEventListener('resize', updateSize)
     }, [])
 
     return (
         <div>
-            <div style={{ textAlign: 'center' }}>
-                <Button disabled={selected.length !== 3} variant="contained" onClick={() => onSubmit(selected)}>View Solution</Button>
+            <div style={{textAlign: 'center'}}>
+                <Button
+                    disabled={selected.length !== 3}
+                    variant="contained"
+                    onClick={() => onSubmit(selected)}
+                >
+                    View Solution
+                </Button>
             </div>
-            <SymbolGrid symbols={getFilteredSymbols(SymbolFilters.Puzzle)} imagePathPrefix="disciple" selected={selected} cols={symbolColumns} onChange={(newVals) => setSelected(newVals)} />
+            <SymbolGrid
+                symbols={getFilteredSymbols(SymbolFilters.Puzzle)}
+                imagePathPrefix="disciple"
+                selected={selected}
+                cols={symbolColumns}
+                onChange={(newVals) => setSelected(newVals)}
+            />
         </div>
     )
 }
@@ -54,8 +66,12 @@ const DisciplePuzzle = () => {
     return (
         <div className="main-tab-content">
             <Typography variant="h4">Disciple Puzzle</Typography>
-            {currentPanel === Panels.SelectSymbols && <SelectSymbols onSubmit={onSymbolsSelected} />}
-            {currentPanel === Panels.DisplaySolution && <PuzzleSolution selected={selected} onReset={onReset} />}
+            {currentPanel === Panels.SelectSymbols && (
+                <SelectSymbols onSubmit={onSymbolsSelected} />
+            )}
+            {currentPanel === Panels.DisplaySolution && (
+                <PuzzleSolution selected={selected} onReset={onReset} />
+            )}
         </div>
     )
 }

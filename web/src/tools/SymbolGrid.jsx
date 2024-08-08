@@ -1,12 +1,17 @@
-import { ImageList, ImageListItem } from "@mui/material"
+import {ImageList, ImageListItem} from '@mui/material'
 
-const SymbolItem = ({ fileName, imagePathPrefix, selected, onSelect }) => {
-    return <ImageListItem className={selected ? 'gradient-border' : 'unselected-symbol'} onClick={() => onSelect(fileName)}>
-        <img src={`/${imagePathPrefix}/${fileName}`} alt={fileName} />
-    </ImageListItem>
+const SymbolItem = ({fileName, imagePathPrefix, selected, onSelect}) => {
+    return (
+        <ImageListItem
+            className={selected ? 'gradient-border' : 'unselected-symbol'}
+            onClick={() => onSelect(fileName)}
+        >
+            <img src={`/${imagePathPrefix}/${fileName}`} alt={fileName} />
+        </ImageListItem>
+    )
 }
 
-const SymbolGrid = ({ cols, symbols = [], imagePathPrefix, selected, onChange }) => {
+const SymbolGrid = ({cols, symbols = [], imagePathPrefix, selected, onChange}) => {
     const isSelected = (fileName) => selected.includes(fileName)
 
     const onSymbolSelected = (fileName) => {
@@ -18,8 +23,8 @@ const SymbolGrid = ({ cols, symbols = [], imagePathPrefix, selected, onChange })
     }
 
     return (
-        <ImageList cols={cols} >
-            {symbols.map((fileName) =>
+        <ImageList cols={cols}>
+            {symbols.map((fileName) => (
                 <SymbolItem
                     key={fileName}
                     fileName={fileName}
@@ -27,7 +32,7 @@ const SymbolGrid = ({ cols, symbols = [], imagePathPrefix, selected, onChange })
                     onSelect={onSymbolSelected}
                     imagePathPrefix={imagePathPrefix}
                 />
-            )}
+            ))}
         </ImageList>
     )
 }

@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import {useState, useEffect, useLayoutEffect} from 'react'
 import RaidDetails from './RaidDetails'
 import MobileMain from './mobile/MobileMain'
-import { useNavigate, useParams } from 'react-router-dom'
-import { newRaidByKey, isRaidKey } from './templates'
-import { loadRaid, saveRaid, archiveRaid } from '../api/clan'
-import { Snackbar, IconButton } from '@mui/material'
+import {useNavigate, useParams} from 'react-router-dom'
+import {newRaidByKey, isRaidKey} from './templates'
+import {loadRaid, saveRaid, archiveRaid} from '../api/clan'
+import {Snackbar, IconButton} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import ErrorDialog from '../ErrorDialog'
 import isEmpty from 'lodash.isempty'
 import differenceBy from 'lodash.differenceby'
-import { getCurrentUserInfo } from '../user/currentUser'
+import {getCurrentUserInfo} from '../user/currentUser'
 
 const RaidMain = () => {
     const [screenLayout, setScreenLayout] = useState('desktop')
@@ -23,20 +23,19 @@ const RaidMain = () => {
     const [saveMessage, setSaveMessage] = useState(null)
     const [error, setError] = useState(null)
     const [reloadFlag, setReloadFlag] = useState(1)
-    const { raidKey } = useParams()
+    const {raidKey} = useParams()
 
     useLayoutEffect(() => {
         const updateSize = () => {
             if (window.innerWidth < 1025) {
                 setScreenLayout('mobile')
-            }
-            else {
+            } else {
                 setScreenLayout('desktop')
             }
         }
-        window.addEventListener('resize', updateSize);
-        updateSize();
-        return () => window.removeEventListener('resize', updateSize);
+        window.addEventListener('resize', updateSize)
+        updateSize()
+        return () => window.removeEventListener('resize', updateSize)
     }, [])
 
     useEffect(() => {
@@ -93,19 +92,24 @@ const RaidMain = () => {
         setSaveEnabled(true)
     }
     const onSave = async () => {
-        await performSave({ ...raid, roster: currentRoster, instanceName: instanceName.trim(), date: date.toISOString() })
+        await performSave({
+            ...raid,
+            roster: currentRoster,
+            instanceName: instanceName.trim(),
+            date: date.toISOString()
+        })
     }
 
     const onArchive = async () => {
         await archiveRaid(raid)
-        setRaid({ ...raid, active: false })
+        setRaid({...raid, active: false})
     }
 
     const onRosterChange = async (newRoster, saveData = false) => {
         const removed = differenceBy(currentRoster, newRoster, 'destinyId')
         const newRaid = JSON.parse(JSON.stringify(raid))
         if (removed.length > 0) {
-            const removedIds = removed.map(({ destinyId }) => destinyId)
+            const removedIds = removed.map(({destinyId}) => destinyId)
             newRaid.stages.forEach((stage) => {
                 stage.roles.forEach((role) => {
                     if (role.player && removedIds.includes(role.player.destinyId)) {
@@ -117,13 +121,13 @@ const RaidMain = () => {
         }
         setCurrentRoster(newRoster)
         if (saveData) {
-            await performSave({ ...newRaid, roster: newRoster, instanceName, date })
+            await performSave({...newRaid, roster: newRoster, instanceName, date})
         }
     }
 
     const onErrorDialogClose = (action) => {
         if (action === 'reload') {
-            //refresh page
+            // refresh page
             window.location.reload()
             setReloadFlag(reloadFlag + 1)
         }
@@ -131,9 +135,7 @@ const RaidMain = () => {
     }
 
     if (isLoading) {
-        return (
-            <div>Loading...</div>
-        )
+        return <div>Loading...</div>
     }
 
     const ViewComponent = screenLayout === 'mobile' ? MobileMain : RaidDetails
@@ -149,7 +151,12 @@ const RaidMain = () => {
                 onChangeRaid={async (updated, doSave) => {
                     setRaid(updated)
                     if (doSave) {
-                        await performSave({ ...updated, roster: currentRoster, instanceName: instanceName.trim(), date })
+                        await performSave({
+                            ...updated,
+                            roster: currentRoster,
+                            instanceName: instanceName.trim(),
+                            date
+                        })
                     }
                 }}
                 onSave={onSave}
@@ -163,7 +170,7 @@ const RaidMain = () => {
                     horizontal: 'center'
                 }}
                 open={!!saveMessage}
-                onClose={evt => setSaveMessage(null)}
+                onClose={() => setSaveMessage(null)}
                 message={saveMessage}
                 autoHideDuration={6000}
                 action={
@@ -171,7 +178,7 @@ const RaidMain = () => {
                         size="small"
                         aria-label="close"
                         color="inherit"
-                        onClick={evt => setSaveMessage(null)}
+                        onClick={() => setSaveMessage(null)}
                     >
                         <CloseIcon fontSize="small" />
                     </IconButton>

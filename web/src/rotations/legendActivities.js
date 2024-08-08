@@ -12,6 +12,5 @@ export const getLegendActivity = (date) => {
     const heist = rotation[diff % rotation.length]
 
     const remainingWeeks = seasonEndDate.diff(queryDate, 'week')
-    return { heist, remaining: Math.floor(remainingWeeks / 3) + 1 }
-
+    return {heist, remaining: Math.floor(remainingWeeks / 3) + 1}
 }

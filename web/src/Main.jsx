@@ -1,5 +1,4 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Home from './home/Home'
 import RaidMain from './raid/RaidMain.jsx'
 import ApplicationBar from './ApplicationBar'
@@ -9,14 +8,13 @@ import ActivityMain from './activities/ActivityMain'
 import CalendarInstructions from './home/CalendarInstructions'
 import DiscipleSymbols from './tools/disciple/DiscipleSymbols'
 import ExternalHome from './external/ExternalHome'
-import DisciplePuzzle from './tools/disciple/DisciplePuzzle';
-import TakenKingChestPuzzle from './tools/takenking/ChestPuzzle';
-import { BlogMain } from './blog';
-import { EmoteActions } from './tools/emotes/EmoteActions';
-import { ManageEmoteConfigs } from './tools/emotes/ManageEmoteConfigs';
-import { EventMain } from './events/eventMain.jsx';
+import DisciplePuzzle from './tools/disciple/DisciplePuzzle'
+import TakenKingChestPuzzle from './tools/takenking/ChestPuzzle'
+import {BlogMain} from './blog'
+import {ManageEmoteConfigs} from './tools/emotes/ManageEmoteConfigs'
+import {EventMain} from './events/EventMain.jsx'
 
-const Main = (props) => {
+const Main = () => {
     return (
         <Router>
             <ApplicationBar />

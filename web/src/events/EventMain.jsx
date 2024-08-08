@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
-import { DesktopMain } from './desktop/DesktopMain'
-import { MobileMain } from './mobile/MobileMain'
-import { useNavigate, useParams } from 'react-router-dom'
-import { loadActivity, saveActivity, archiveActivity } from '../api/clan'
-import { Snackbar, IconButton } from '@mui/material'
+import {useState, useEffect, useLayoutEffect} from 'react'
+import {DesktopMain} from './desktop/DesktopMain'
+import {MobileMain} from './mobile/MobileMain'
+import {useNavigate, useParams} from 'react-router-dom'
+import {loadActivity, saveActivity, archiveActivity} from '../api/clan'
+import {Snackbar, IconButton} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import ErrorDialog from '../ErrorDialog'
 import isEmpty from 'lodash.isempty'
 import _ from 'lodash'
-import { SelectActivity } from './SelectActivity'
-import { getCurrentUserInfo } from '../user/currentUser'
+import {SelectActivity} from './SelectActivity'
+import {getCurrentUserInfo} from '../user/currentUser'
 
 export function EventMain() {
     const [screenLayout, setScreenLayout] = useState('desktop')
@@ -25,19 +25,18 @@ export function EventMain() {
     const [saveMessage, setSaveMessage] = useState(null)
     const [error, setError] = useState(null)
     const [reloadFlag, setReloadFlag] = useState(1)
-    const { activityKey } = useParams()
+    const {activityKey} = useParams()
     useLayoutEffect(() => {
         const updateSize = () => {
             if (window.innerWidth < 1025) {
                 setScreenLayout('mobile')
-            }
-            else {
+            } else {
                 setScreenLayout('desktop')
             }
         }
-        window.addEventListener('resize', updateSize);
-        updateSize();
-        return () => window.removeEventListener('resize', updateSize);
+        window.addEventListener('resize', updateSize)
+        updateSize()
+        return () => window.removeEventListener('resize', updateSize)
     }, [])
 
     useEffect(() => {
@@ -63,7 +62,7 @@ export function EventMain() {
         if (activityKey === 'new') {
             const user = getCurrentUserInfo()
             if (user) {
-                setCurrentRoster([{ name: user.name, id: user.destinyId, type: 'destiny' }])
+                setCurrentRoster([{name: user.name, id: user.destinyId, type: 'destiny'}])
             }
             setIsLoading(false)
             setSaveEnabled(false)
@@ -87,7 +86,9 @@ export function EventMain() {
             setActivity(updated)
             if (isNew) {
                 navigate(`/event/${updated.id}`)
-                setSaveMessage('Activity saved! You can now share the URL in the browser with others.')
+                setSaveMessage(
+                    'Activity saved! You can now share the URL in the browser with others.'
+                )
             } else {
                 setSaveMessage('Activity updates saved!')
             }
@@ -97,27 +98,43 @@ export function EventMain() {
         }
     }
     const onSave = async () => {
-        await performSave({ ...activity, players: currentRoster, backups: backupRoster, instanceName, date: date.toISOString(), maxPlayers })
+        await performSave({
+            ...activity,
+            players: currentRoster,
+            backups: backupRoster,
+            instanceName,
+            date: date.toISOString(),
+            maxPlayers
+        })
     }
 
     const onArchive = async () => {
         await archiveActivity(activity)
-        setActivity({ ...activity, active: false })
+        setActivity({...activity, active: false})
     }
 
-    const onRosterChange = async (newRoster, saveData = false) => {
+    const onRosterChange = async (newRoster) => {
         setCurrentRoster(newRoster)
         if (saveEnabled) {
-            await performSave({ ...activity, players: newRoster, backups: backupRoster, instanceName, date })
+            await performSave({
+                ...activity,
+                players: newRoster,
+                backups: backupRoster,
+                instanceName,
+                date
+            })
         }
     }
 
     const onActivityChange = async (newActivity) => {
-        const updated = { ...newActivity, id: activity?.id, version: activity?.version }
+        const updated = {...newActivity, id: activity?.id, version: activity?.version}
         let newBackups = backupRoster
         let newCurrent = currentRoster
         if (currentRoster.length > updated.maxPlayers) {
-            const addToBackup = _.takeRight(currentRoster, currentRoster.length - updated.maxPlayers)
+            const addToBackup = _.takeRight(
+                currentRoster,
+                currentRoster.length - updated.maxPlayers
+            )
             console.log('addToBackup: ', addToBackup)
             newBackups = backupRoster.concat(addToBackup)
             console.log('newBackups: ', newBackups)
@@ -128,18 +145,30 @@ export function EventMain() {
         setActivity(updated)
         setMaxPlayers(updated.maxPlayers)
         if (saveEnabled) {
-            await performSave({ ...updated, players: newCurrent, backups: newBackups, instanceName, date })
+            await performSave({
+                ...updated,
+                players: newCurrent,
+                backups: newBackups,
+                instanceName,
+                date
+            })
         }
     }
-    const onBackupRosterChange = async (newBackups, saveData = false) => {
+    const onBackupRosterChange = async (newBackups) => {
         setBackupRoster(newBackups)
         if (saveEnabled) {
-            await performSave({ ...activity, players: currentRoster, backups: newBackups, instanceName, date })
+            await performSave({
+                ...activity,
+                players: currentRoster,
+                backups: newBackups,
+                instanceName,
+                date
+            })
         }
     }
     const onErrorDialogClose = (action) => {
         if (action === 'reload') {
-            //refresh page
+            // refresh page
             window.location.reload()
             setReloadFlag(reloadFlag + 1)
         }
@@ -148,15 +177,16 @@ export function EventMain() {
 
     if (activityKey === 'new' && !activity) {
         return (
-            <div style={{ paddingTop: '10px' }}>
-                <SelectActivity onSelect={(activity) => setActivity(activity)} onCancel={() => navigate('/')} />
+            <div style={{paddingTop: '10px'}}>
+                <SelectActivity
+                    onSelect={(activity) => setActivity(activity)}
+                    onCancel={() => navigate('/')}
+                />
             </div>
         )
     }
     if (isLoading) {
-        return (
-            <div>Loading...</div>
-        )
+        return <div>Loading...</div>
     }
 
     const ViewComponent = screenLayout === 'mobile' ? MobileMain : DesktopMain
@@ -184,7 +214,7 @@ export function EventMain() {
                     horizontal: 'center'
                 }}
                 open={!!saveMessage}
-                onClose={evt => setSaveMessage(null)}
+                onClose={() => setSaveMessage(null)}
                 message={saveMessage}
                 autoHideDuration={6000}
                 action={
@@ -192,7 +222,7 @@ export function EventMain() {
                         size="small"
                         aria-label="close"
                         color="inherit"
-                        onClick={evt => setSaveMessage(null)}
+                        onClick={() => setSaveMessage(null)}
                     >
                         <CloseIcon fontSize="small" />
                     </IconButton>

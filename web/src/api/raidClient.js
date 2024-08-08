@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import {ApolloClient, InMemoryCache} from '@apollo/client'
 // import dataStore from './dataStore'
 // const apiUrl = 'https://us-central1-shenaniganizers-e51d9.cloudfunctions.net/api'
 const apiUrl = import.meta.env.VITE_API_URL

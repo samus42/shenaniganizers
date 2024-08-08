@@ -1,4 +1,4 @@
-import { determineRank } from './ranks'
+import {determineRank} from './ranks'
 
 describe('ranks', () => {
     it('max rank', () => {
@@ -9,13 +9,15 @@ describe('ranks', () => {
 
     it('no rank', () => {
         expect(determineRank('Deep Stone Crypt', 'operator', 1)).toEqual({
-            rank: 'None', nextAt: 5
+            rank: 'None',
+            nextAt: 5
         })
     })
 
     it('ranked', () => {
         expect(determineRank('Deep Stone Crypt', 'operator', 6)).toEqual({
-            rank: 'Light Switch Operator', nextAt: 10
+            rank: 'Light Switch Operator',
+            nextAt: 10
         })
     })
 })

@@ -1,11 +1,11 @@
-const { MongoClient, ObjectId } = require('mongodb')
+const {MongoClient, ObjectId} = require('mongodb')
 const _ = require('lodash')
 const connStr = process.env.MONGO_DB_CONN
 const dbName = process.env.MONGO_DB_NAME
 const env = process.env.NODE_ENV
 
-const AsyncLock = require('async-lock');
-const lock = new AsyncLock();
+const AsyncLock = require('async-lock')
+const lock = new AsyncLock()
 console.log('conn str: ', connStr)
 let client = null
 
@@ -14,7 +14,7 @@ const postfix = env === 'testing' ? '_it' : ''
 const raidsCollectionName = `raids${postfix}`
 const activitiesCollectionName = `activities${postfix}`
 const emoteConfigsCollectionName = `emotes${postfix}`
-let connecting = false
+const connecting = false
 
 const getDB = async () => {
     return lock.acquire('db', async () => {
@@ -24,7 +24,7 @@ const getDB = async () => {
                 setTimeout()
             }
             console.log('connecting')
-            client = new MongoClient(connStr, { useNewUrlParser: true, useUnifiedTopology: true })
+            client = new MongoClient(connStr, {useNewUrlParser: true, useUnifiedTopology: true})
             await client.connect()
             console.log('connected')
             db = client.db(dbName)
@@ -54,6 +54,14 @@ const getObjectID = (id) => {
 
 const formatOutput = (obj) => {
     if (!obj) return obj
-    return _.extend(_.omit(obj, '_id'), { id: obj._id.toString() })
+    return _.extend(_.omit(obj, '_id'), {id: obj._id.toString()})
 }
-module.exports = { getDB, getActivitiesCollection, getRaidsCollection, getEmoteConfigsCollection, client, getObjectID, formatOutput }
+module.exports = {
+    getDB,
+    getActivitiesCollection,
+    getRaidsCollection,
+    getEmoteConfigsCollection,
+    client,
+    getObjectID,
+    formatOutput
+}

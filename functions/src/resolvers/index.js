@@ -8,7 +8,7 @@ const saveActivity = require('../data/activities/saveActivity')
 const loadActivity = require('../data/activities/loadActivity')
 const archiveActivity = require('../data/activities/archiveActivity')
 const getActivities = require('../data/activities/getActivities')
-const { sendRaidMessage, sendActivityMessage } = require('../discord/webhook')
+const {sendRaidMessage, sendActivityMessage} = require('../discord/webhook')
 const getEmoteConfigs = require('../data/emotes/getEmoteConfigs')
 const loadEmoteConfig = require('../data/emotes/loadEmoteConfig')
 const saveEmoteConfig = require('../data/emotes/saveEmoteConfig')
@@ -18,16 +18,16 @@ const resolvers = {
         version() {
             return packageJSON.version
         },
-        getRaid(root, { id }) {
+        getRaid(root, {id}) {
             return loadRaid(id)
         },
         async listRaids() {
             return getRaids()
         },
-        userRaidHistory(root, { destinyId }) {
+        userRaidHistory(root, {destinyId}) {
             return getUserRaidHistory(destinyId)
         },
-        getActivity(root, { id }) {
+        getActivity(root, {id}) {
             return loadActivity(id)
         },
         listActivities() {
@@ -36,12 +36,12 @@ const resolvers = {
         listEmoteConfigs() {
             return getEmoteConfigs()
         },
-        getEmoteConfig(root, { id }) {
+        getEmoteConfig(root, {id}) {
             return loadEmoteConfig(id)
         }
     },
     Mutation: {
-        async saveRaid(root, { raid }) {
+        async saveRaid(root, {raid}) {
             let original = null
             if (raid.id) {
                 try {
@@ -68,10 +68,10 @@ const resolvers = {
             }
             return updated
         },
-        archiveRaid(root, { id }) {
+        archiveRaid(root, {id}) {
             return archiveRaid(id)
         },
-        async saveActivity(root, { activity }) {
+        async saveActivity(root, {activity}) {
             let original = null
             if (activity.id) {
                 try {
@@ -102,10 +102,10 @@ const resolvers = {
             }
             return updated
         },
-        archiveActivity(root, { id }) {
+        archiveActivity(root, {id}) {
             return archiveActivity(id)
         },
-        saveEmoteConfig(root, { emoteConfig }) {
+        saveEmoteConfig(root, {emoteConfig}) {
             return saveEmoteConfig(emoteConfig)
         }
     }

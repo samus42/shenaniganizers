@@ -1,4 +1,4 @@
-const { getEmoteConfigsCollection, formatOutput, getObjectID } = require('../mongo')
+const {getEmoteConfigsCollection, formatOutput} = require('../mongo')
 const _ = require('lodash')
 
 const getEmoteConfigs = async () => {

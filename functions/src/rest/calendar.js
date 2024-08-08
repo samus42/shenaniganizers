@@ -1,4 +1,4 @@
-const { default: ical } = require('ical-generator')
+const {default: ical} = require('ical-generator')
 const moment = require('moment')
 const getRaids = require('../data/raids/getRaids')
 const getActivities = require('../data/activities/getActivities')
@@ -31,7 +31,7 @@ const activityToEvent = (activity) => {
 const raidCalendarHandler = async (req, res) => {
     const raids = await getRaids()
     const events = raids.map(raidToEvent)
-    const cal = ical({ domain: 'shenaniganizers.com', name: 'Shenaniganizers Raid Calendar', events })
+    const cal = ical({domain: 'shenaniganizers.com', name: 'Shenaniganizers Raid Calendar', events})
 
     cal.serve(res)
 }
@@ -39,8 +39,8 @@ const raidCalendarHandler = async (req, res) => {
 const allEventsHandler = async (req, res) => {
     const [raids, activities] = await Promise.all([getRaids(), getActivities()])
     const events = raids.map(raidToEvent).concat(activities.map(activityToEvent))
-    const cal = ical({ domain: 'shenaniganizers.com', name: 'Shenaniganizers Calendar', events })
+    const cal = ical({domain: 'shenaniganizers.com', name: 'Shenaniganizers Calendar', events})
     cal.serve(res)
 }
 
-module.exports = { raidCalendarHandler, allEventsHandler }
+module.exports = {raidCalendarHandler, allEventsHandler}

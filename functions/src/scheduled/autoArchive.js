@@ -1,8 +1,8 @@
-const autoArchiveActivities = require("../data/activities/autoArchiveActivities")
-const autoArchiveRaids = require("../data/raids/autoArchiveRaids")
-const autoCleanupRaids = require("../data/raids/autoCleanupRaids")
+const autoArchiveActivities = require('../data/activities/autoArchiveActivities')
+const autoArchiveRaids = require('../data/raids/autoArchiveRaids')
+const autoCleanupRaids = require('../data/raids/autoCleanupRaids')
 
-const autoArchive = async (context) => {
+const autoArchive = async () => {
     try {
         console.log('Starting autoarchiving process!')
         const [activites, raids] = await Promise.all([autoArchiveActivities(), autoArchiveRaids()])

@@ -4,7 +4,7 @@ import {List, ListItemText, ListItemButton, Typography, Button} from '@mui/mater
 import raidClient from '../api/raidClient'
 import gql from 'graphql-tag'
 import dayjs from 'dayjs'
-import sortBy from 'lodash.sortby'
+import {sortBy} from 'lodash'
 
 const query = gql`
     query {

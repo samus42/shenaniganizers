@@ -7,7 +7,7 @@ import {loadActivity, saveActivity, archiveActivity} from '../api/clan'
 import {Snackbar, IconButton} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import ErrorDialog from '../ErrorDialog'
-import isEmpty from 'lodash.isempty'
+import {isEmpty} from 'lodash'
 
 const ActivityMain = () => {
     const [screenLayout, setScreenLayout] = useState('desktop')

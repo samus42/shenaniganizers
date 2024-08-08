@@ -8,7 +8,7 @@ import {
     TextField,
     CircularProgress
 } from '@mui/material'
-import isEmpty from 'lodash.isempty'
+import {isEmpty} from 'lodash'
 import {searchUsers} from '../api/destiny'
 
 const SelectNonClanMember = ({fullScreen = false, onSelected = () => {}, disabled = false}) => {

@@ -44,12 +44,11 @@
   border: 1px solid #b00020;
   color: #b00020;
   border-radius: 10px;
+  height: 24px;
 
   &:hover {
     cursor: pointer;
   }
-
-  height: 24px;
 }
 
 .menu-surface {
@@ -128,13 +127,13 @@
 }
 
 .gradient-border {
-  &:hover {
-    cursor: pointer;
-  }
-
   --border-width: 5px;
   margin: 5px;
   border-radius: var(--border-width);
+  
+  &:hover {
+    cursor: pointer;
+  }
 
   &::after {
     position: absolute;

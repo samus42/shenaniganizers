@@ -7,8 +7,7 @@ import {loadRaid, saveRaid, archiveRaid} from '../api/clan'
 import {Snackbar, IconButton} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import ErrorDialog from '../ErrorDialog'
-import isEmpty from 'lodash.isempty'
-import differenceBy from 'lodash.differenceby'
+import {differenceBy, isEmpty} from 'lodash'
 import {getCurrentUserInfo} from '../user/currentUser'
 
 const RaidMain = () => {

@@ -1,7 +1,5 @@
 import agent from 'superagent'
-import sortBy from 'lodash.sortby'
-import uniqBy from 'lodash.uniqby'
-import isEmpty from 'lodash.isempty'
+import {sortBy, uniqBy, isEmpty} from 'lodash'
 import dayjs from 'dayjs'
 
 const header = {'X-API-KEY': import.meta.env.VITE_API_KEY}

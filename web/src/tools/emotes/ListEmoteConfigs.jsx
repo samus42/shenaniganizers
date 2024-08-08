@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import gql from 'graphql-tag'
-import isEmpty from 'lodash.isempty'
+import {isEmpty} from 'lodash'
 import raidClient from '../../api/raidClient'
 import {Button, List, ListItemButton, ListItemIcon, ListItemText, Typography} from '@mui/material'
 

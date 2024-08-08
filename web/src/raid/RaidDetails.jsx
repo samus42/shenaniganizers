@@ -1,5 +1,5 @@
 import {useMemo} from 'react'
-import debounce from 'lodash.debounce'
+import {debounce} from 'lodash'
 import ClanRoster from './ClanRoster'
 import RaidRoster from './RaidRoster'
 import {Button, TextField, Stack} from '@mui/material'

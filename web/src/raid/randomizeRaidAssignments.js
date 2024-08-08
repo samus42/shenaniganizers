@@ -1,4 +1,4 @@
-import shuffle from 'lodash.shuffle'
+import {shuffle} from 'lodash'
 
 const randomizeRaidAssignments = ({raid, roster}) => {
     const stages = raid.stages.map((stage) => {

@@ -32,7 +32,13 @@ export default defineConfig({
                     lodash: ['lodash', 'omit-deep-lodash'],
                     react: ['react'],
                     graphql: ['graphql', '@apollo/client'],
-                    material: ['@mui/material', '@mui/lab', '@mui/x-date-pickers']
+                    material: [
+                        '@emotion/react',
+                        '@emotion/styled',
+                        '@mui/material',
+                        '@mui/icons-material'
+                    ],
+                    materialExtras: ['@mui/lab', '@mui/x-date-pickers']
                 }
             }
         }

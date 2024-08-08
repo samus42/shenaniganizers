@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react'
-import differenceBy from 'lodash.differenceby'
-import isEmpty from 'lodash.isempty'
+import {differenceBy, isEmpty} from 'lodash'
 import {getClanRoster} from '../../api/destiny'
 import {
     TextField,

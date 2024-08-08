@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {getClanRoster} from '../api/destiny'
 import {List, ListItemIcon, ListItemText, ListItemButton} from '@mui/material'
-import differenceBy from 'lodash.differenceby'
+import {differenceBy} from 'lodash'
 
 const ClanRoster = ({excludeList = [], onSelect = () => {}, disabled = false}) => {
     const [roster, setRoster] = useState([])

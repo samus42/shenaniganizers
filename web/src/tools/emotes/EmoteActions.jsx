@@ -1,7 +1,6 @@
 import allEmotes from './emotes.json'
-import differenceBy from 'lodash.differenceby'
+import {differenceBy, isEmpty} from 'lodash'
 import {useEffect, useState} from 'react'
-import isEmpty from 'lodash.isempty'
 import Grid from '@mui/material/Unstable_Grid2'
 import {
     Autocomplete,

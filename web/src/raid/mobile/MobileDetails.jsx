@@ -1,5 +1,5 @@
 import {useMemo} from 'react'
-import debounce from 'lodash.debounce'
+import {debounce} from 'lodash'
 import {TextField, Button} from '@mui/material'
 import {DateTimePicker} from '@mui/x-date-pickers/DateTimePicker'
 

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
-import differenceBy from 'lodash.differenceby'
-import isEmpty from 'lodash.isempty'
+import {differenceBy} from 'lodash'
+import {isEmpty} from 'lodash'
 import {getClanRoster} from '../../api/destiny'
 import {TextField, Button, List, ListItem, IconButton, Autocomplete} from '@mui/material'
 import DeleteIcon from '@mui/icons-material/PersonRemove'

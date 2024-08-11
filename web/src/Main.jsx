@@ -1,10 +1,8 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Home from './home/Home'
-import RaidMain from './raid/RaidMain.jsx'
 import ApplicationBar from './ApplicationBar'
 import ProcessLogin from './user/ProcessLogin'
 import Profile from './user/Profile'
-import ActivityMain from './activities/ActivityMain'
 import CalendarInstructions from './home/CalendarInstructions'
 import DiscipleSymbols from './tools/disciple/DiscipleSymbols'
 import ExternalHome from './external/ExternalHome'
@@ -23,8 +21,6 @@ const Main = () => {
                     <Route path=":tab" element={<Home />} />
                 </Route>
                 <Route exact path="/help/calendar" element={<CalendarInstructions />} />
-                <Route exact path="/raid/:raidKey" element={<RaidMain />} />
-                <Route exact path="/activity/:activityKey" element={<ActivityMain />} />
                 <Route exact path="/event/:activityKey" element={<EventMain />} />
                 <Route exact path="/profile" element={<Profile />} />
                 <Route exact path="/process-login" element={<ProcessLogin />} />

@@ -83,7 +83,10 @@ export function EventMain() {
         try {
             console.log('saving:', activityData)
             const isNew = !activity.id
-            const updated = await saveActivity(activityData)
+            const updated = await saveActivity({
+                ...activityData,
+                date: activityData.date.toISOString()
+            })
             setActivity(updated)
             if (isNew) {
                 navigate(`/event/${updated.id}`)
@@ -104,7 +107,7 @@ export function EventMain() {
             players: currentRoster,
             backups: backupRoster,
             instanceName,
-            date: date.toISOString(),
+            date,
             maxPlayers
         })
     }

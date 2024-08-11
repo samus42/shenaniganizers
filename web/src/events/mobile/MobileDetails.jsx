@@ -36,12 +36,14 @@ const MobileDetails = ({
                     onChange={(evt) => onChange({instanceName: evt.target.value, date, maxPlayers})}
                 />
             </div>
-            <div style={{paddingTop: '50px'}}>
-                <div>What time do you want to go?</div>
+            <div style={{paddingTop: '50px', width: '100%'}}>
+                <div style={{paddingBottom: '5px'}}>What time do you want to go?</div>
                 <DateTimePicker
                     onChange={(val) => onChange({instanceName, date: val, maxPlayers})}
                     value={date}
                     minutesStep={5}
+                    fullWidth
+                    sx={{width: '100%'}}
                     renderInput={(params) => <TextField fullWidth {...params} />}
                 />
             </div>

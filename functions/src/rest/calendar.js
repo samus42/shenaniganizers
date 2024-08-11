@@ -29,18 +29,36 @@ const activityToEvent = (activity) => {
     }
 }
 const raidCalendarHandler = async (req, res) => {
-    const raids = await getRaids()
-    const events = raids.map(raidToEvent)
-    const cal = ical({domain: 'shenaniganizers.com', name: 'Shenaniganizers Raid Calendar', events})
+    try {
+        const raids = await getRaids()
+        const events = raids.map(raidToEvent)
+        const cal = ical({
+            domain: 'shenaniganizers.com',
+            name: 'Shenaniganizers Raid Calendar',
+            events
+        })
 
-    cal.serve(res)
+        res.writeHead(200, {
+            'Content-Type': 'text/calendar; charset=utf-8',
+            'Content-Disposition': 'attachment; filename="calendar.ics"'
+        })
+
+        res.end(cal.toString())
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 const allEventsHandler = async (req, res) => {
     const [raids, activities] = await Promise.all([getRaids(), getActivities()])
     const events = raids.map(raidToEvent).concat(activities.map(activityToEvent))
     const cal = ical({domain: 'shenaniganizers.com', name: 'Shenaniganizers Calendar', events})
-    cal.serve(res)
+    res.writeHead(200, {
+        'Content-Type': 'text/calendar; charset=utf-8',
+        'Content-Disposition': 'attachment; filename="calendar.ics"'
+    })
+
+    res.end(cal.toString())
 }
 
 module.exports = {raidCalendarHandler, allEventsHandler}

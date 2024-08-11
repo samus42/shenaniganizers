@@ -8,6 +8,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import ErrorDialog from '../ErrorDialog'
 import {isEmpty} from 'lodash'
 import _ from 'lodash'
+import dayjs from 'dayjs'
 import {SelectActivity} from './SelectActivity'
 import {getCurrentUserInfo} from '../user/currentUser'
 
@@ -17,7 +18,7 @@ export function EventMain() {
     const [activity, setActivity] = useState(null)
     const [instanceName, setInstanceName] = useState('')
     const [maxPlayers, setMaxPlayers] = useState(6)
-    const [date, setDate] = useState(new Date())
+    const [date, setDate] = useState(dayjs())
     const [currentRoster, setCurrentRoster] = useState([])
     const [backupRoster, setBackupRoster] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -47,7 +48,7 @@ export function EventMain() {
                 console.log('loaded: ', loaded)
                 setActivity(loaded)
                 setInstanceName(loaded.instanceName)
-                setDate(new Date(loaded.date))
+                setDate(dayjs(loaded.date))
                 setCurrentRoster(loaded.players)
                 setBackupRoster(loaded.backups)
                 setMaxPlayers(loaded.maxPlayers)

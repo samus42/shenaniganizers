@@ -71,13 +71,13 @@ const Onslaught = ({date}) => {
 //     )
 // }
 const DisplayRotation = () => {
-    const [selectedDate, setSelectedDate] = useState(dayjs().format('MM/DD/YYYY'))
+    const [selectedDate, setSelectedDate] = useState(dayjs())
     useEffect(() => {
         const fifteenMinutes = 900000
         const interval = setInterval(() => {
             const today = dayjs()
             if (dayjs(selectedDate).isBefore(today, 'day')) {
-                setSelectedDate(today.format('MM/DD/YYYY'))
+                setSelectedDate(today)
             }
         }, fifteenMinutes)
         return () => clearInterval(interval)

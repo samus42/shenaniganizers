@@ -50,7 +50,6 @@ const loyaltysTest = {
     author: samus,
     icon: samusIcon,
     title: `Loyalty's Test`,
-    subtext: 'Just Released!',
     pdf: 'https://drive.google.com/file/d/15HrrKAcA5Q-T3e1_gINCEQkdzkRC0Uj-/view?usp=sharing',
     epub: 'https://drive.google.com/file/d/1zB1JFjuAJ3pXeI3JobDg9BySBUrTl7uH/view?usp=sharing'
 }
@@ -58,7 +57,9 @@ const threadsOfDeceit = {
     author: samus,
     icon: samusIcon,
     title: `Threads of Deceit`,
-    subtext: 'Coming Fall 2024'
+    subtext: 'Just Released!',
+    pdf: 'https://drive.google.com/file/d/19sGhUKTI-p8Pbg7tE2qZQasFYO1pZkUr/view?usp=drive_link',
+    epub: 'https://drive.google.com/file/d/1pF8t61DJwN8_4UAdLx1PnyKJQoWdqeWR/view?usp=drive_link'
 }
 const thornOfDarkness = {
     author: samus,
@@ -90,7 +91,6 @@ const defectiveTitan = {
     author: tansy,
     icon: tansyIcon,
     title: 'The Defective Titan',
-    subtext: 'Just Released!',
     pdf: 'https://drive.google.com/file/d/1yWN5b4Rn5ztTiNF6CotOfVa8rAuiBpF_/view?usp=sharing'
 }
 function BookItem({book, onClick}) {
@@ -201,7 +201,7 @@ export default function Books() {
                 <BookItem book={defectiveTitan} onClick={onBookClick} />
                 <BookItem book={redjackThief} onClick={onBookClick} />
                 <BookItem book={sinsOfTheKeepers} onClick={onBookClick} />
-                <BookItem book={threadsOfDeceit} />
+                <BookItem book={threadsOfDeceit} onClick={onBookClick} />
                 <BookItem book={thornOfDarkness} />
                 <EventItem event="Shadowkeep" />
             </Timeline>

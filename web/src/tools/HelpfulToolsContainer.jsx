@@ -123,9 +123,51 @@ function GhostsPanel() {
         </div>
     )
 }
+
+function SalvationPanel() {
+    const substratumMap = '/salvation/Substratum.jpeg'
+    const repositoryMap = '/salvation/RepositoryMap.png'
+    const witnessResonance = '/salvation/WitnessResonance.png'
+    const witnessTestShapes = '/salvation/WitnessTestShapes.png'
+    return (
+        <div>
+            <Typography variant="h6">{`Salvation's Edge`}</Typography>
+            <Stack spacing={2} sx={{maxWidth: '400px'}}>
+                <a rel="noreferrer" target="_blank" href={substratumMap}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Substratum Map
+                    </Button>
+                </a>
+                <a rel="noreferrer" target="_blank" href={repositoryMap}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Repository Map
+                    </Button>
+                </a>
+                <a rel="noreferrer" target="_blank" href={witnessResonance}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Witness Resonances
+                    </Button>
+                </a>
+                <a rel="noreferrer" target="_blank" href={witnessTestShapes}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        {`Witness's Test Shapes`}
+                    </Button>
+                </a>
+            </Stack>
+        </div>
+    )
+}
 function TopLevelPanel({screenLayout, onChangePanel}) {
     return (
         <Grid container spacing={1}>
+            <SubjectCard
+                imagePath="/activities/salvations-edge.png"
+                title="Salvation's Edge"
+                screenLayout={screenLayout}
+                onClick={() => {
+                    onChangePanel('salvation')
+                }}
+            />
             <SubjectCard
                 imagePath="/activities/ghosts-of-the-deep.png"
                 title="Ghosts of the Deep"
@@ -183,7 +225,8 @@ const components = {
     kf: KingsFallPanel,
     vow: VowPanel,
     nightmare: NightmarePanel,
-    ghosts: GhostsPanel
+    ghosts: GhostsPanel,
+    salvation: SalvationPanel
 }
 
 export function HelpfulToolsContainer() {

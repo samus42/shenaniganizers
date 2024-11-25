@@ -20,15 +20,33 @@ export const Rewards = {
     Arms: 'Arms'
 }
 
-export const FirstDayOfLostSectorRotation = dayjs('2024-07-25')
+export const FirstDayOfLostSectorRotation = dayjs('2024-11-03')
 
-// const K1Revelation = sector(`K1 Revelation`, Areas.Moon, Void, [Arc], [Barrier, Unstoppable])
-// const K1CrewQuarters = sector(`K1 Crew Quarters`, Areas.Moon, Arc, [Solar], [Barrier, Overload])
-// const K1Logistics = sector(`K1 Logistics`, Areas.Moon, Void, [Arc, Solar], [Barrier, Overload])
-// const K1Communion = sector(`K1 Communion`, Areas.Moon, Solar, [Solar, Void], [Barrier, Overload])
-// const Sepulcher = sector(`Sepulcher`, Areas.ThroneWorld, Solar, [Arc, Solar], [Barrier, Unstoppable])
-// const Extraction = sector(`Extraction`, Areas.ThroneWorld, Arc, [Arc, Void], [Overload, Unstoppable])
-// const Metamorphosis = sector('Metamorphosis', Areas.ThroneWorld, Arc, [Arc, Solar], [Overload, Unstoppable])
+const K1Revelation = sector(`K1 Revelation`, Areas.Moon, Void, [Arc], [Barrier, Unstoppable])
+const K1CrewQuarters = sector(`K1 Crew Quarters`, Areas.Moon, Arc, [Solar], [Barrier, Overload])
+const K1Logistics = sector(`K1 Logistics`, Areas.Moon, Void, [Arc, Solar], [Barrier, Overload])
+const K1Communion = sector(`K1 Communion`, Areas.Moon, Solar, [Solar, Void], [Barrier, Overload])
+const Sepulcher = sector(
+    `Sepulcher`,
+    Areas.ThroneWorld,
+    Solar,
+    [Arc, Solar],
+    [Barrier, Unstoppable]
+)
+const Extraction = sector(
+    `Extraction`,
+    Areas.ThroneWorld,
+    Arc,
+    [Arc, Void],
+    [Overload, Unstoppable]
+)
+const Metamorphosis = sector(
+    'Metamorphosis',
+    Areas.ThroneWorld,
+    Arc,
+    [Arc, Solar],
+    [Overload, Unstoppable]
+)
 const AphelionsRest = sector(
     `Aphelion's Rest`,
     Areas.DreamingCity,
@@ -115,22 +133,26 @@ const HyrdoponicsDelta = sector(
     [Barrier, Unstoppable]
 )
 
-/*
-const ExcavationSiteXII = sector(`Excavation Site XII`, Areas.EDZ, Solar, [Arc], [Barrier, Unstoppable])
-*/
+const ExcavationSiteXII = sector(
+    `Excavation Site XII`,
+    Areas.EDZ,
+    Solar,
+    [Arc],
+    [Barrier, Unstoppable]
+)
 
 const sectorRotation = [
-    ExodusGarden2A,
+    BayOfDrownedWishes,
+    ChamberOfStarlight,
+    TheQuarry,
+    ExcavationSiteXII,
     TheBrokenDeep,
     TheBloomingDeep,
     TheForgottenDeep,
-    Perdition,
-    BunkerE15,
-    ConcealedVoid,
-    TheConflux,
-    Thrilladome,
-    HyrdoponicsDelta,
-    VelesLabyrinth
+    Extraction,
+    Sepulcher,
+    Metamorphosis,
+    K1Revelation
 ]
 /*
 sector('Concealed Void', Areas.Europa),

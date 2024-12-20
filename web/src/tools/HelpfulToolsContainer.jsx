@@ -157,9 +157,39 @@ function SalvationPanel() {
         </div>
     )
 }
+
+function VesperPanel() {
+    const vesperBombPuzzle = '/vesper/VesperBombPuzzle.jpg'
+    const vesperLightningPuzzle = '/vesper/VesperLightningPuzzle.jpg'
+    return (
+        <div>
+            <Typography variant="h6">{`Vesper's Host`}</Typography>
+            <Stack spacing={2} sx={{maxWidth: '400px'}}>
+                <a rel="noreferrer" target="_blank" href={vesperBombPuzzle}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Bomb Puzzle Map
+                    </Button>
+                </a>
+                <a rel="noreferrer" target="_blank" href={vesperLightningPuzzle}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Lightning Puzzle Map
+                    </Button>
+                </a>
+            </Stack>
+        </div>
+    )
+}
 function TopLevelPanel({screenLayout, onChangePanel}) {
     return (
         <Grid container spacing={1}>
+            <SubjectCard
+                imagePath="/activities/vespers-host.png"
+                title="Vesper's Host"
+                screenLayout={screenLayout}
+                onClick={() => {
+                    onChangePanel('vesper')
+                }}
+            />
             <SubjectCard
                 imagePath="/activities/salvations-edge.png"
                 title="Salvation's Edge"
@@ -226,7 +256,8 @@ const components = {
     vow: VowPanel,
     nightmare: NightmarePanel,
     ghosts: GhostsPanel,
-    salvation: SalvationPanel
+    salvation: SalvationPanel,
+    vesper: VesperPanel
 }
 
 export function HelpfulToolsContainer() {

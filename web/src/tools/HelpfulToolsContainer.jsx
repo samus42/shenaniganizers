@@ -179,9 +179,40 @@ function VesperPanel() {
         </div>
     )
 }
+
+function SunderedDoctrinePanel() {
+    const prismPuzzle = '/doctrine/PrismPuzzleMap.png'
+    const finalBossMap = '/doctrine/FinalBossMap.png'
+    return (
+        <div>
+            <Typography variant="h6">{`Sundered Doctrine`}</Typography>
+            <Stack spacing={2} sx={{maxWidth: '400px'}}>
+                <a rel="noreferrer" target="_blank" href={prismPuzzle}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Prism Puzzle Map
+                    </Button>
+                </a>
+                <a rel="noreferrer" target="_blank" href={finalBossMap}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Final Boss Map
+                    </Button>
+                </a>
+            </Stack>
+        </div>
+    )
+}
+
 function TopLevelPanel({screenLayout, onChangePanel}) {
     return (
         <Grid container spacing={1}>
+            <SubjectCard
+                imagePath="/activities/sundered-doctrine-seal.png"
+                title="Sundered Doctrine"
+                screenLayout={screenLayout}
+                onClick={() => {
+                    onChangePanel('doctrine')
+                }}
+            />
             <SubjectCard
                 imagePath="/activities/vespers-host.png"
                 title="Vesper's Host"
@@ -257,7 +288,8 @@ const components = {
     nightmare: NightmarePanel,
     ghosts: GhostsPanel,
     salvation: SalvationPanel,
-    vesper: VesperPanel
+    vesper: VesperPanel,
+    doctrine: SunderedDoctrinePanel
 }
 
 export function HelpfulToolsContainer() {

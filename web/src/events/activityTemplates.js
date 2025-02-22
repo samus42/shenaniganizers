@@ -83,6 +83,12 @@ export function getActivities() {
         createActivity(Custom, 'Custom Activity', '/activities/custom.png'),
         createActivity(DestinyRaid, `Crota's End`, '/activities/crota.png'),
         createActivity(DestinyRaid, 'Wrath Of The Machine', '/activities/wrathofthemachine.png'),
+        createActivity(
+            DestinyDungeon,
+            'Sundered Doctrine',
+            '/activities/sundered-doctrine-seal.png'
+        ),
+        createActivity(DestinyDungeon, `Vesper's Host`, '/activities/vespers-host.png'),
         createActivity(DestinyDungeon, 'Warlords Ruin', '/activities/warlords-ruin.png'),
         createActivity(DestinyDungeon, 'Ghosts of the Deep', '/activities/ghosts-of-the-deep.png'),
         createActivity(DestinyDungeon, 'Shattered Throne', '/activities/shattered-throne.png'),

@@ -180,6 +180,28 @@ function VesperPanel() {
     )
 }
 
+function PitOfHeresyPanel() {
+    const harrowsMap = '/heresy/Heresy - Harrows.png'
+    const tunnelsOfDespairMap = '/heresy/Heresy - TunnelsOfDespair.jpeg'
+    return (
+        <div>
+            <Typography variant="h6">{`Pit Of Heresy`}</Typography>
+            <Stack spacing={2} sx={{maxWidth: '400px'}}>
+                <a rel="noreferrer" target="_blank" href={tunnelsOfDespairMap}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Tunnels of Despair Map
+                    </Button>
+                </a>
+                <a rel="noreferrer" target="_blank" href={harrowsMap}>
+                    <Button sx={{width: '100%'}} variant="contained">
+                        Harows Map
+                    </Button>
+                </a>
+            </Stack>
+        </div>
+    )
+}
+
 function SunderedDoctrinePanel() {
     const prismPuzzle = '/doctrine/PrismPuzzleMap.png'
     const finalBossMap = '/doctrine/FinalBossMap.png'
@@ -262,6 +284,14 @@ function TopLevelPanel({screenLayout, onChangePanel}) {
                 }}
             />
             <SubjectCard
+                imagePath="/activities/pit-of-heresy.png"
+                title="Pit of Heresy"
+                screenLayout={screenLayout}
+                onClick={() => {
+                    onChangePanel('heresy')
+                }}
+            />
+            <SubjectCard
                 imagePath="https://titles.trackercdn.com/destiny/common/destiny2_content/icons/06890287711fb3db6e35dacd696ed748.jpg"
                 title="Emote Communication"
                 screenLayout={screenLayout}
@@ -289,7 +319,8 @@ const components = {
     ghosts: GhostsPanel,
     salvation: SalvationPanel,
     vesper: VesperPanel,
-    doctrine: SunderedDoctrinePanel
+    doctrine: SunderedDoctrinePanel,
+    heresy: PitOfHeresyPanel
 }
 
 export function HelpfulToolsContainer() {

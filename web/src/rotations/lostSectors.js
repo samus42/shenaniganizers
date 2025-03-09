@@ -20,7 +20,7 @@ export const Rewards = {
     Arms: 'Arms'
 }
 
-export const FirstDayOfLostSectorRotation = dayjs('2024-11-03')
+export const FirstDayOfLostSectorRotation = dayjs('2025-03-08')
 
 const K1Revelation = sector(`K1 Revelation`, Areas.Moon, Void, [Arc], [Barrier, Unstoppable])
 const K1CrewQuarters = sector(`K1 Crew Quarters`, Areas.Moon, Arc, [Solar], [Barrier, Overload])
@@ -142,17 +142,17 @@ const ExcavationSiteXII = sector(
 )
 
 const sectorRotation = [
-    BayOfDrownedWishes,
+    ExodusGarden2A,
+    AphelionsRest,
     ChamberOfStarlight,
-    TheQuarry,
-    ExcavationSiteXII,
+    GildedPrecept,
+    HyrdoponicsDelta,
+    Thrilladome,
     TheBrokenDeep,
     TheBloomingDeep,
-    TheForgottenDeep,
-    Extraction,
-    Sepulcher,
-    Metamorphosis,
-    K1Revelation
+    BunkerE15,
+    Perdition,
+    VelesLabyrinth
 ]
 /*
 sector('Concealed Void', Areas.Europa),

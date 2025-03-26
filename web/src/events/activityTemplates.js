@@ -2,6 +2,7 @@ export const Games = {
     Destiny: 'Destiny',
     AmongUs: 'Among Us',
     Helldivers2: 'Helldivers 2',
+    MonsterHunterWilds: 'Monster Hunter Wilds',
     Custom: 'Custom'
 }
 
@@ -47,6 +48,12 @@ const AmongUs = {
 const Helldivers2 = {
     game: Games.Helldivers2,
     type: 'For Democracy!',
+    maxPlayers: 4
+}
+
+const MonsterHunterWilds = {
+    game: Games.MonsterHunterWilds,
+    type: 'Hunt',
     maxPlayers: 4
 }
 
@@ -99,6 +106,11 @@ export function getActivities() {
         createActivity(DestinyExoticQuest, 'The Whisper', '/weapons/whisper-of-the-worm.png'),
         createActivity(DestinyFullSquadPvP, 'Iron Banner', '/activities/iron-banner.png'),
         createActivity(DestinyFireteamPvP, 'Trials of Osiris', '/activities/trials-of-osiris.png'),
-        createActivity(Helldivers2, 'Helldivers 2 Run', '/activities/helldivers2.png')
+        createActivity(Helldivers2, 'Helldivers 2 Run', '/activities/helldivers2.png'),
+        createActivity(
+            MonsterHunterWilds,
+            'Monster Hunter Wilds',
+            '/activities/monster-hunter-wilds.png'
+        )
     ]
 }

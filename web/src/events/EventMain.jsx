@@ -183,7 +183,7 @@ export function EventMain() {
         return (
             <div style={{paddingTop: '10px'}}>
                 <SelectActivity
-                    onSelect={(activity) => setActivity(activity)}
+                    onSelect={(activity) => onActivityChange(activity)}
                     onCancel={() => navigate('/')}
                 />
             </div>

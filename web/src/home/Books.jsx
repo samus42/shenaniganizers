@@ -186,6 +186,8 @@ export default function Books() {
             <Typography variant="h6">
                 {`If you'd like to get in touch with our authors, drop us an email at `}
                 <a href="mailto:books@shenaniganizers.com">books@shenaniganizers.com</a>
+                <strong>{`. Note: the email address is not currently working. `}</strong>
+                {`The domain move to Squarespace somehow screwed that up.`}
             </Typography>
             <Timeline>
                 <EventItem event={`Crota's End`} />

@@ -1,7 +1,7 @@
 import {Grid, Typography} from '@mui/material'
 
 const MemberCard = ({name, iconUrl, children}) => (
-    <Grid item>
+    <Grid>
         <div className="member-card">
             <div>
                 <img alt="icon" src={iconUrl} style={{height: '180px'}} />

@@ -18,13 +18,13 @@ const Activities = () => {
     return (
         <div className="main-tab-content">
             <Grid container spacing={10}>
-                <Grid item md={6}>
+                <Grid size={{md:6}}>
                     <ActiveList onChooseActivity={() => setShowChooseActivity(true)} />
                 </Grid>
-                <Grid item md={6}>
+                <Grid size={{md:6}}>
                     <DisplayRotation />
                 </Grid>
-                <Grid item md={12}>
+                <Grid size={{md:12}}>
                     <HelpfulToolsContainer />
                 </Grid>
             </Grid>

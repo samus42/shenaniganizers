@@ -14,7 +14,7 @@ const SubjectCard = ({imagePath, title, screenLayout, onClick}) => {
     const imageSize = screenLayout === 'desktop' ? '120px' : '80px'
     const cardWidth = screenLayout === 'desktop' ? '250px' : '170px'
     return (
-        <Grid item xs={6} md={3}>
+        <Grid size={{xs:6, md:3}}>
             <Card sx={{maxHeight: '200px', width: cardWidth}}>
                 <CardActionArea onClick={onClick}>
                     <div style={{padding: '2px'}}>

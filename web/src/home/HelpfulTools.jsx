@@ -14,7 +14,7 @@ const HelpfulTools = () => {
                 <Typography variant="h4">Helpful Tools</Typography>
             </div>
             <Grid container spacing={10}>
-                <Grid item md={6}>
+                <Grid size={{md:6}}>
                     <Typography variant="h6">Taken King</Typography>
                     <Stack spacing={2} sx={{maxWidth: '400px'}}>
                         <Button onClick={() => navigate('/tools/tkk-puzzle')} variant="contained">
@@ -31,7 +31,7 @@ const HelpfulTools = () => {
                         </a>
                     </Stack>
                 </Grid>
-                <Grid item md={6}>
+                <Grid size={{md:6}}>
                     <Typography variant="h6">Vow Of The Disciple</Typography>
                     <Stack spacing={2} sx={{maxWidth: '400px'}}>
                         <Button variant="contained" onClick={() => navigate('/tools/disciple')}>

@@ -22,7 +22,7 @@ const ActivityCard = ({imagePath, title, screenLayout, target}) => {
     const imageSize = screenLayout === 'desktop' ? '120px' : '80px'
     const cardWidth = screenLayout === 'desktop' ? '250px' : '170px'
     return (
-        <Grid item sx={6} md={3}>
+        <Grid size={{sx:6, md:3}}>
             <Card sx={{maxHeight: '200px', width: cardWidth}}>
                 <CardActionArea onClick={() => navigate(target)}>
                     <div style={{padding: '2px'}}>

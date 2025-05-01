@@ -185,14 +185,14 @@ const DesktopRoster = ({
                 </Button>
             </div>
             <Grid sx={{marginTop: '10px'}} container spacing={2}>
-                <Grid item xs={12} md={6}>
+                <Grid size={{xs:12, md:6}}>
                     <PlayerList
                         title={`${Math.max(0, maxPlayers - roster.length)} active slots available`}
                         players={roster}
                         onDelete={onRemovePlayer}
                     />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid size={{xs:12, md:6}}>
                     <PlayerList title="Backups" players={backupRoster} onDelete={onRemoveBackup} />
                 </Grid>
             </Grid>

@@ -1,7 +1,6 @@
 import allEmotes from './emotes.json'
 import {differenceBy, isEmpty} from 'lodash'
 import {useEffect, useState} from 'react'
-import Grid from '@mui/material/Unstable_Grid2'
 import {
     Autocomplete,
     Box,
@@ -11,7 +10,8 @@ import {
     Select,
     MenuItem,
     InputLabel,
-    Button
+    Button,
+    Grid
 } from '@mui/material'
 import {gql} from '@apollo/client'
 import raidClient from '../../api/raidClient'
@@ -239,27 +239,27 @@ export function EmoteActions({currentUser, onSave, onCancel, configId}) {
         return (
             <>
                 <Grid container spacing={2}>
-                    <Grid md={4} xs={0} />
-                    <Grid md={4} xs={12}>
+                    <Grid size={{md:4, xs:0}} />
+                    <Grid size={{md:4, xs:12}}>
                         <EmoteDisplay label="Up, Front" value={upEmote} />
                     </Grid>
-                    <Grid md={4} xs={0} />
-                    <Grid md={4} xs={12}>
+                    <Grid size={{md:4, xs:0}} />
+                    <Grid size={{md:4, xs:12}}>
                         <EmoteDisplay label="Left" value={leftEmote} />
                     </Grid>
-                    <Grid md={4} xs={0} />
-                    <Grid md={4} xs={12}>
+                    <Grid size={{md:4, xs:0}} />
+                    <Grid size={{md:4, xs:12}}>
                         <EmoteDisplay label="Right" value={rightEmote} />
                     </Grid>
-                    <Grid md={4} xs={0} />
-                    <Grid md={4} xs={12}>
+                    <Grid size={{md:4, xs:0}} />
+                    <Grid size={{md:4, xs:12}}>
                         <EmoteDisplay label="Down, Back" value={downEmote} />
                     </Grid>
-                    <Grid md={4} xs={0} />
+                    <Grid size={{md:4, xs:0}} />
                 </Grid>
                 <hr />
                 <Grid container spacing={2}>
-                    <Grid xs={12} md={5}>
+                    <Grid size={{xs:12, md:5}}>
                         <Typography variant="h6">Basic</Typography>
                         <EmoteDisplay
                             label="Yes, Ready, Go"
@@ -270,7 +270,7 @@ export function EmoteActions({currentUser, onSave, onCancel, configId}) {
                             value={getEmoteByDirection(noDirection)}
                         />
                     </Grid>
-                    <Grid xs={12} md={5}>
+                    <Grid size={{xs:12, md:5}}>
                         <Typography variant="h6">Counting</Typography>
                         <EmoteDisplay label="1" value={getEmoteByDirection(oneDirection)} />
                         <EmoteDisplay label="2" value={getEmoteByDirection(twoDirection)} />
@@ -286,13 +286,13 @@ export function EmoteActions({currentUser, onSave, onCancel, configId}) {
         return (
             <>
                 <Grid container spacing={2}>
-                    <Grid md={12} xs={12}>
+                    <Grid size={{md:12, xs:12}}>
                         <div>
                             <strong>Assign emotes to D-Pad buttons</strong>
                         </div>
                     </Grid>
-                    <Grid md={4} xs={0} />
-                    <Grid md={4} xs={12}>
+                    <Grid size={{md:4, xs:0}} />
+                    <Grid size={{md:4, xs:12}}>
                         <EmoteSelect
                             label="Up, Front"
                             value={upEmote}
@@ -300,8 +300,8 @@ export function EmoteActions({currentUser, onSave, onCancel, configId}) {
                             selected={selected}
                         />
                     </Grid>
-                    <Grid md={4} xs={0} />
-                    <Grid md={4} xs={12}>
+                    <Grid size={{md:4, xs:0}} />
+                    <Grid size={{md:4, xs:12}}>
                         <EmoteSelect
                             label="Left"
                             value={leftEmote}
@@ -309,8 +309,8 @@ export function EmoteActions({currentUser, onSave, onCancel, configId}) {
                             selected={selected}
                         />
                     </Grid>
-                    <Grid md={4} xs={0} />
-                    <Grid md={4} xs={12}>
+                    <Grid size={{md:4, xs:0}} />
+                    <Grid size={{md:4, xs:12}}>
                         <EmoteSelect
                             label="Right"
                             value={rightEmote}
@@ -318,8 +318,8 @@ export function EmoteActions({currentUser, onSave, onCancel, configId}) {
                             selected={selected}
                         />
                     </Grid>
-                    <Grid md={4} xs={0} />
-                    <Grid md={4} xs={12}>
+                    <Grid size={{md:4, xs:0}} />
+                    <Grid size={{md:4, xs:12}}>
                         <EmoteSelect
                             label="Down, Back"
                             value={downEmote}
@@ -327,11 +327,11 @@ export function EmoteActions({currentUser, onSave, onCancel, configId}) {
                             selected={selected}
                         />
                     </Grid>
-                    <Grid md={4} xs={0} />
+                    <Grid size={{md:4, xs:0}} />
                 </Grid>
                 <hr />
                 <Grid container spacing={2}>
-                    <Grid xs={12} md={5}>
+                    <Grid size={{xs:12, md:5}}>
                         <Typography variant="h6">Basic</Typography>
                         <DirectionSelect
                             label="Yes, Ready, Go"
@@ -354,7 +354,7 @@ export function EmoteActions({currentUser, onSave, onCancel, configId}) {
                             selected={basicSelected}
                         />
                     </Grid>
-                    <Grid xs={12} md={5}>
+                    <Grid size={{xs:12, md:5}}>
                         <Typography variant="h6">Counting</Typography>
                         <DirectionSelect
                             label="1"

@@ -5,10 +5,10 @@ const Extras = () => {
     return (
         <div className="main-tab-content">
             <Grid container spacing={10}>
-                <Grid item md={6}>
+                <Grid size={{md:6}}>
                     <Books />
                 </Grid>
-                <Grid item md={6}>
+                <Grid size={{md:6}}>
                     <Typography variant="h4">Other Publications</Typography>
                     <div style={{paddingTop: '20px', paddingBottom: '20px'}}>
                         <Typography variant="h6">

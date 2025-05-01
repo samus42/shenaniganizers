@@ -51,7 +51,7 @@ const RoleDetail = ({raidName, roleType, count}) => {
 const RaidDetails = ({raidInfo}) => {
     const {raidName, numRuns, roleTypes} = raidInfo
     return (
-        <Grid item>
+        <Grid>
             <Typography variant="h4">
                 {raidName}
                 <small>{`  (${numRuns} runs)`}</small>

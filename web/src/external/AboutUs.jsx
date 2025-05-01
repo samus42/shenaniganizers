@@ -4,7 +4,7 @@ const AboutUs = () => {
         <div className="main-tab-content">
             <Typography variant="h4">Welcome to the Shenaniganizers!</Typography>
             <Grid container spacing={5}>
-                <Grid item md={6}>
+                <Grid size={{md:6}}>
                     <div style={{marginTop: '20px'}}>
                         <Typography variant="h5">So who are we?</Typography>
                     </div>
@@ -50,7 +50,7 @@ const AboutUs = () => {
                         </small>
                     </p>
                 </Grid>
-                <Grid item md={5}>
+                <Grid size={{md:5}}>
                     <div style={{marginTop: '20px'}}>
                         <Typography variant="h5">{`So what's on this site?`}</Typography>
                     </div>

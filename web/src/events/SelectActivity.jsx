@@ -114,7 +114,7 @@ export function SelectActivity({onSelect, onCancel}) {
             )}
             <Grid container spacing={2}>
                 {filteredActivities.map((activity) => (
-                    <Grid xs={12} md={6} item key={activity.title}>
+                    <Grid size={{xs:12, md:6}} key={activity.title}>
                         <ActivityCard activity={activity} onClick={onSelect} />
                     </Grid>
                 ))}

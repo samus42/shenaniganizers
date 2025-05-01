@@ -42,7 +42,7 @@ export function DesktopMain({
                 <h2 style={{paddingLeft: '20px'}}>This activity is longer active!</h2>
             )}
             <Grid container spacing={4}>
-                <Grid item xs={4}>
+                <Grid size={{xs:4}}>
                     <div>
                         <Typography variant="h6">Details</Typography>
                     </div>
@@ -103,7 +103,7 @@ export function DesktopMain({
                         </div>
                     )}
                 </Grid>
-                <Grid item xs={8}>
+                <Grid size={{xs:8}}>
                     <div>
                         <Typography variant="h6">Roster</Typography>
                     </div>

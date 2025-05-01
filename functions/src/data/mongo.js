@@ -24,7 +24,7 @@ const getDB = async () => {
                 setTimeout()
             }
             console.log('connecting')
-            client = new MongoClient(connStr, {useNewUrlParser: true, useUnifiedTopology: true})
+            client = new MongoClient(connStr, {})
             await client.connect()
             console.log('connected')
             db = client.db(dbName)

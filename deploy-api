@@ -1,5 +1,5 @@
 pushd functions
-npm ci --production
+npm ci --omit=dev
 popd
 firebase deploy --only functions
 pushd functions

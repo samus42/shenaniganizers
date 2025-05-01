@@ -1,4 +1,5 @@
-const functions = require('firebase-functions')
+const {onRequest} = require('firebase-functions/v2/https')
+const {onSchedule} = require('firebase-functions/v2/scheduler')
 const express = require('express')
 require('dotenv').config()
 const restRoutes = require('./src/rest')
@@ -9,8 +10,6 @@ const app = express()
 app.use('/rest', restRoutes)
 app.use('/', yoga)
 
-exports.api = functions.https.onRequest(app)
+exports.apiSecondGen = onRequest(app)
 
-exports.scheduledFunctionAutoArchive = functions.pubsub
-    .schedule('every day 00:00')
-    .onRun(autoArchive)
+exports.scheduledFunctionAutoArchiveSecondGen = onSchedule('every day 00:00', autoArchive)

@@ -1,5 +1,5 @@
 import {Button, Typography} from '@mui/material'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router'
 const Tools = () => {
     const navigate = useNavigate()
     return (

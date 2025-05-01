@@ -1,5 +1,5 @@
 import {useLayoutEffect, useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router'
 import {Grid, Card, CardActionArea, Typography, Button} from '@mui/material'
 
 const createActivity = (title, imagePath, target) => ({title, imagePath, target})

@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {ListEmoteConfigs} from './ListEmoteConfigs'
 import {EmoteActions} from './EmoteActions'
-import {useParams, useNavigate} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router'
 import {getCurrentUserInfo} from '../../user/currentUser'
 import raidClient from '../../api/raidClient'
 import {gql} from '@apollo/client'

@@ -1,6 +1,6 @@
 import {useState, useLayoutEffect} from 'react'
 import {Grid, Card, CardActionArea, Typography, Button, Stack} from '@mui/material'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router'
 
 const discipleThirdEncounterMap =
     'https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/03/Destiny-2-Vow-of-the-Disciple-Upended-Map.jpg?q=50&fit=crop&w=750&dpr=1.5'

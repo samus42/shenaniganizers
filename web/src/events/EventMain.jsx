@@ -1,7 +1,7 @@
 import {useState, useEffect, useLayoutEffect} from 'react'
 import {DesktopMain} from './desktop/DesktopMain'
 import {MobileMain} from './mobile/MobileMain'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router'
 import {loadActivity, saveActivity, archiveActivity} from '../api/clan'
 import {Snackbar, IconButton} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'

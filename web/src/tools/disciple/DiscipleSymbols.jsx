@@ -1,5 +1,5 @@
 import {useState, useLayoutEffect} from 'react'
-import {useParams, useNavigate, useLocation} from 'react-router-dom'
+import {useParams, useNavigate, useLocation} from 'react-router'
 import {Button, Typography, ToggleButton, ToggleButtonGroup} from '@mui/material'
 import {getFilteredSymbols, SymbolFilters} from './symbolList'
 import SymbolGrid from '../SymbolGrid'

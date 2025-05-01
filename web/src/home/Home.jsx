@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {useParams, useNavigate} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router'
 import {Tabs, Tab} from '@mui/material'
 import Members from './Members'
 import Activities from './Activities'

@@ -1,6 +1,6 @@
 import {useState, useEffect, useLayoutEffect} from 'react'
 import {AppBar, Toolbar, Typography, Box, Avatar, Button, Menu, MenuItem} from '@mui/material'
-import {useNavigate, useLocation} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router'
 import {getCurrentUserInfo, clearMembershipInfo} from './user/currentUser'
 
 const clientId = import.meta.env.VITE_CLIENT_ID

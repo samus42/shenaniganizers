@@ -1,5 +1,5 @@
 import {useEffect} from 'react'
-import {useNavigate, useLocation} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router'
 import {getUserAuthInfo, getMembershipById} from '../api/destiny'
 import {setMembershipInfo, setAuthInfo} from './currentUser'
 

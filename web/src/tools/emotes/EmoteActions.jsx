@@ -88,6 +88,7 @@ function DirectionSelect({
             <FormControl fullWidth>
                 <InputLabel id={labelId}>{label}</InputLabel>
                 <Select
+                    variant="standard"
                     labelId={labelId}
                     sx={{padding: '10px'}}
                     value={value}

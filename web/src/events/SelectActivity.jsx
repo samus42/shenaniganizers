@@ -78,6 +78,7 @@ export function SelectActivity({onSelect, onCancel}) {
                 <FormControl fullWidth>
                     <InputLabel id="game-select-label">Game</InputLabel>
                     <Select
+                        variant="standard"
                         labelId="game-select-label"
                         label="Game"
                         value={gameFilter}
@@ -97,6 +98,7 @@ export function SelectActivity({onSelect, onCancel}) {
                     <FormControl fullWidth>
                         <InputLabel id="game-select-label">Types</InputLabel>
                         <Select
+                            variant="standard"
                             labelId="game-select-label"
                             label="Types"
                             value={typeFilter}

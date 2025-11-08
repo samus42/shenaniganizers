@@ -57,7 +57,6 @@ const threadsOfDeceit = {
     author: samus,
     icon: samusIcon,
     title: `Threads of Deceit`,
-    subtext: 'Just Released!',
     pdf: 'https://drive.google.com/file/d/19sGhUKTI-p8Pbg7tE2qZQasFYO1pZkUr/view?usp=drive_link',
     epub: 'https://drive.google.com/file/d/1pF8t61DJwN8_4UAdLx1PnyKJQoWdqeWR/view?usp=drive_link'
 }
@@ -65,7 +64,9 @@ const thornOfDarkness = {
     author: samus,
     icon: samusIcon,
     title: `Thorn of Darkness`,
-    subtext: 'Coming Fall 2025'
+    subtext: 'Just Released!',
+    pdf: 'https://drive.google.com/file/d/17ffJyRsbczOZrVGUE9OMr3eYKpoqB23L/view?usp=drive_link',
+    epub: 'https://drive.google.com/file/d/1olNLehPQH3YqO_PfFLSIsFBVfAOk3YBU/view?usp=drive_link'
 }
 const redjackThief = {
     author: ace,
@@ -78,7 +79,6 @@ const sinsOfTheKeepers = {
     author: ace,
     icon: aceIcon,
     title: 'Sins of the Keepers',
-    subtext: 'Just Released!',
     pdf: 'https://drive.google.com/file/d/1EDM8uXQJZwobyVhlv5lMJ5aLFhtizPfS/view?usp=drive_link'
 }
 const worstHunter = {
@@ -93,6 +93,22 @@ const defectiveTitan = {
     title: 'The Defective Titan',
     pdf: 'https://drive.google.com/file/d/1yWN5b4Rn5ztTiNF6CotOfVa8rAuiBpF_/view?usp=sharing'
 }
+const introBook = {
+    author: samus,
+    icon: samusIcon,
+    subtext: 'Read this to introduce yourself to the universe!',
+    title: `A Ghost's Guide to Destiny`,
+    pdf: 'https://drive.google.com/file/d/1IhNwdvBN7HbQw5LJVoqGEDWrYLkxh8ZN/view?usp=drive_link',
+    epub: 'https://drive.google.com/file/d/1Z-EbVLwBc7Rn62nJF7HFwr5C2ok6qUT-/view?usp=drive_link'
+}
+const memoriesOfTheLost = {
+    author: ace,
+    icon: aceIcon,
+    subtext: 'Just released!',
+    title: 'Memories of the Lost',
+    pdf: 'https://drive.google.com/file/d/1l6-W4z0j4NAuf0YzFE3ORVQuG7bVpwzT/view?usp=drive_link'
+}
+
 function BookItem({book, onClick}) {
     return (
         <TimelineItem>
@@ -181,7 +197,7 @@ export default function Books() {
             <Typography variant="h6">
                 Our clan members have written a few Destiny novels using a shared universe. Give
                 them a try! See the timeline below for reading order. Click on a book link to get
-                download options.
+                download options. Never played Destiny? Don't worry, check out <strong>{`A Ghost's Guide To Destiny`}</strong> below!
             </Typography>
             <Typography variant="h6">
                 {`If you'd like to get in touch with our authors, drop us an email at `}
@@ -190,6 +206,7 @@ export default function Books() {
                 {`The domain move to Squarespace somehow screwed that up.`}
             </Typography>
             <Timeline>
+                <BookItem book={introBook} onClick={onBookClick} />
                 <EventItem event={`Crota's End`} />
                 <EventItem event={`Fall of Oryx`} />
                 <BookItem book={dolArnach} onClick={onBookClick} />
@@ -202,10 +219,11 @@ export default function Books() {
                 <BookItem book={loyaltysTest} onClick={onBookClick} />
                 <BookItem book={defectiveTitan} onClick={onBookClick} />
                 <BookItem book={redjackThief} onClick={onBookClick} />
-                <BookItem book={sinsOfTheKeepers} onClick={onBookClick} />
                 <BookItem book={threadsOfDeceit} onClick={onBookClick} />
-                <BookItem book={thornOfDarkness} />
+                <BookItem book={sinsOfTheKeepers} onClick={onBookClick} />
+                <BookItem book={memoriesOfTheLost} onClick={onBookClick} />
                 <EventItem event="Shadowkeep" />
+                <BookItem book={thornOfDarkness} onClick={onBookClick} />
             </Timeline>
             <Popover
                 open={anchorEl}

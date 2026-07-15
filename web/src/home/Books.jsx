@@ -79,7 +79,8 @@ const sinsOfTheKeepers = {
     author: ace,
     icon: aceIcon,
     title: 'Sins of the Keepers',
-    pdf: 'https://drive.google.com/file/d/1EDM8uXQJZwobyVhlv5lMJ5aLFhtizPfS/view?usp=drive_link'
+    pdf: 'https://drive.google.com/file/d/1EDM8uXQJZwobyVhlv5lMJ5aLFhtizPfS/view?usp=drive_link',
+    epub: 'https://drive.google.com/file/d/1mLK4PHfamiHbwZ1Z01RVbjsRfYcVlQ3f/view?usp=drive_link'
 }
 const worstHunter = {
     author: tansy,
@@ -106,7 +107,8 @@ const memoriesOfTheLost = {
     icon: aceIcon,
     subtext: 'Just released!',
     title: 'Memories of the Lost',
-    pdf: 'https://drive.google.com/file/d/1l6-W4z0j4NAuf0YzFE3ORVQuG7bVpwzT/view?usp=drive_link'
+    pdf: 'https://drive.google.com/file/d/1l6-W4z0j4NAuf0YzFE3ORVQuG7bVpwzT/view?usp=drive_link',
+    epub: 'https://drive.google.com/file/d/1l0aCIzTctyOzc5dGIL-5HCqAsoHAcMZW/view?usp=drive_link'
 }
 
 function BookItem({book, onClick}) {
@@ -202,8 +204,7 @@ export default function Books() {
             <Typography variant="h6">
                 {`If you'd like to get in touch with our authors, drop us an email at `}
                 <a href="mailto:books@shenaniganizers.com">books@shenaniganizers.com</a>
-                <strong>{`. Note: the email address is not currently working. `}</strong>
-                {`The domain move to Squarespace somehow screwed that up.`}
+                <strong>{`. Note: the email address is working again!. `}</strong>
             </Typography>
             <Timeline>
                 <BookItem book={introBook} onClick={onBookClick} />
